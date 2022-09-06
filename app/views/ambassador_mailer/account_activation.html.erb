@@ -1,0 +1,56 @@
+
+<!-- <h3><%= link_to "Edit your Profile", edit_ambassador_activation_url(@ambassador.activation_token, email: @ambassador.email) %></h3> -->
+
+<div class="email-template-wrap">
+
+	
+
+	<div class="hero">
+		<h2 >Next Steps</h2>
+	</div>
+
+	<!-- <div>
+		<p class="big">This email is your confirmation that you are booked for the below shifts. </p>
+	</div> -->
+		
+
+
+	<div class="events">
+		<p>Hello <%= @ambassador.first_name.capitalize  %>,</p>
+		<p>Welcome to Shyft! We are excited you want to join the team. Before you can start accepting bookings and activate your account we need to have a quick 15 minute video chat to go over all the details. Please click the link below to schedule this call.</p>
+
+	<a href="https://calendly.com/farquhar/discovery-call" class="button-blue">Pick a Time!</a>
+
+    	<hr class="limit">
+
+		<div class="faqs">
+			<h3 >FAQ's</h3>
+
+			<p class="title"><b>How many shifts a week should I expect?</b></p>
+			<p class="content">Its really hard to say and changes season by season. We have some ambassadors that do this fulltime and others that only work weekends.</p>	
+			<p class="title"><b>What if I change my mind and don't want to be an ambassador any more?</b></p>
+			<p  class="content">Thats completly up to you. If you decide this isn't for you, you can leave the platform at any time.</p>
+			<p class="title" ><b>If you have any questions please feel free to respond to this email.</b></p>
+		</div>
+
+		<hr class="normal">
+	</div>
+</div>
+<div class="footer" >
+
+	<div class="footer-content">
+
+		<hr>
+
+		<p>Copyright © 2016 Shyft, All rights reserved.</p>
+
+		<p><b>Our mailing address is:</b> <br>
+		bookings@shyftworks.com</p>
+
+		<p>Want to change how you receive these emails?<br>
+		You can <a href="#" >update your preferences</a> or<a href="#" > unsubscribe from this list</a></p>
+
+		
+	</div>
+
+</div>

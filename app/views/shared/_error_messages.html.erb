@@ -1,0 +1,24 @@
+<% if @ambassador && @ambassador.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@ambassador.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @ambassador.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% else if @agency && @agency.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@agency.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @agency.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>   
+<% end %>
+<% end %>

@@ -1,0 +1,67 @@
+<div class="account-settings row">
+  <div class="content row">
+    <div class="main row"><br />
+    	<div class="title">
+        <h2>Messages</h2>
+      </div>
+
+      <div class="panel panel-default">				
+		<div class="panel-heading">Your Conversations in <%= @event.name if @event.present? %></div>
+			<% if @confirmed_ambassadors.blank? %>
+				<div class="panel-heading">
+					<p>There are currently no Ambassadors confirmed for your event. Once an Ambassador is confirmed you will be able to message them</p>
+				</div>
+			<% else %>
+				<% @conversations.each do |conversation| %>
+					<% other = conversation.sender == current_agency ? conversation.recipient : conversation.sender %>
+						<ul class="list-group">
+							<%= link_to conversation_messages_path(conversation) do %>
+							<li class="list-group-item">
+								<div class="row">
+									<div class="col-sm-2 text-center">			
+										<% if current_agency == nil %>
+											<img src="http://img.photobucket.com/albums/v436/passion4architecture/LOGO_LETTERS%720and%20NUMBERS/Logo_Advantech-Wireless-Broadband-Culture_dian-hasan-branding_US-2_zps4c6702a3.png" style="width:50px;height:50px;">
+										<% else %>
+											<%= attachment_image_tag(other.profile_photo, :file, :fill, 50, 50, class: 'img-circle') %>
+										<% end %>	
+									</div> <!-- col -->
+
+									<div class="col-sm-4">
+										<%= current_agency.nil? ? conversation.sender.company_name : conversation.recipient.full_name %>
+										<br>
+										<%if !conversation.messages.last.nil? %> 
+											<%= conversation.messages.last.message_time	%>
+										<%end%>
+									</div> <!-- col -->
+
+									<div class="col-sm-6">
+										<%if !conversation.messages.last.nil? %> 
+											<%= conversation.messages.last.content %>
+										<%end%>
+									</div>
+								</div>
+							</li> <!-- col -->
+
+						</ul>	
+						<% end %> 
+					<% end %>
+				<%end %>		
+			</div> <!-- panel -->
+
+<!-- 
+			<% if !current_agency.nil? %>
+				<h6>This part should be removed however it makes it easy to message all the ambassadors for testing right now</h6>
+				<h3>All Ambassadors</h3>
+				<% Ambassador.all.each do |ambassador| %>
+					<% if ambassador != current_user %>
+						<%= ambassador.full_name %>
+					
+						<%= link_to "Send Message", conversations_path(sender_id: current_agency.id, recipient_id: ambassador.id), method: 'post' %>
+					<% end %>
+					<br>
+				<% end %>
+			<% end %>
+ -->
+    </div> <!-- main -->
+  </div> <!-- content -->
+</div> <!-- agency -->

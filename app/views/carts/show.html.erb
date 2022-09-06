@@ -1,0 +1,54 @@
+<div class="booking">
+	<div class="background">
+		<div class="content row ">
+			<h2>Review Your Bookings</h2>
+			<!-- <%= render @cart %> -->
+			<%= form_for(@cart) do |f| %>
+			<table class='table table-striped'>
+				<tr>
+					<th class="col-sm-1">Image</th>
+					<th class="col-sm-4">Name</th>
+					<th class="col-sm-2 text-center">Rate</th>
+					<th class="col-sm-2 text-center">Hours</th>
+					<th class="col-sm-2 text-center">Amount</th>
+					<th class="col-sm-1 text-center">Remove</th>
+				</tr>
+
+				<% for i in 0..@cart.line_items.count-1 do %>
+					<%= f.fields_for(@cart.line_items[i]) do |l| %>
+						<tr>
+							<% line_item = @cart.line_items[i] %>
+							<%= hidden_field_tag "line_item_ids[]", line_item.id %>
+							<% ambassador = line_item.ambassador %>
+							
+							<td class="col-sm-3"><%= link_to attachment_image_tag(ambassador.profile_photo, :file, :fill, 50, 50, class: 'img-responsive img-rounded text-center'), ambassador%>	</td>
+							<td class="col-sm-2"><%= ambassador.first_name %> <%= ambassador.last_name %></td>
+							<td class="col-sm-2 text-center"><%= ambassador.rate %></td>
+							<td class="col-sm-1 text-center">
+								<%= select_tag('quantity[]', options_for_select((0..40), selected:line_item.quantity), width: "20px" )%>
+							</td>
+							<td class="col-sm-3 text-center"><%= number_to_currency(line_item.total_price) %></td>
+							<td class="col-sm-1 text-center">
+								<%= link_to line_item, method: :delete, data: { confirm: 'Are you sure?' } do %>
+									<span class="glyphicon glyphicon-trash"></span>
+								<% end %>
+							</td>
+						</tr>
+					<% end %>
+				<% end %>
+		</table>
+			<div class="row">
+				<div class="col-sm-8">
+					<%= link_to "Browse", ambassadors_path, method: :get, class: 'btn btn-lg', id: 'how-btn' %>
+				</div>
+				<div class="col-sm-4">
+					<%= f.button "Update", name: :commit, value: "Update", class: 'btn btn-lg float-right', id: 'how-btn', data: { disable_with: "Updating..." } %>
+				<% end %>
+
+					<%= link_to "Next", new_order_path, method: :get, class: 'btn btn-lg', id: 'how-btn', data: { disable_with: "Requesting..." } %>
+				<!--<%= button_to 'Clear All', @cart, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm', id: 'ambassador-btn'%> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

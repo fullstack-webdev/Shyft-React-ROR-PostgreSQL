@@ -1,0 +1,21 @@
+<div class="account-settings row">
+  <div class="content row">
+    <div class="main row"><br />
+      <div class="panel panel-default">
+			<div class="panel-body">
+				<div class="col-sm-12">
+					<%= form_for [conversation, conversation.messages.new], remote: true do |f| %> 
+						<div class="form-group">
+							<%= f.text_area :content, placeholder: "Message me", class: "form-control" %>
+						</div>
+							<%= f.hidden_field :user_id, value: @ambassador.id %>
+						<div class="actions">
+							<%= f.submit "Send Message", class: "btn", id: "ambassador-btn", data: { disable_with: "Sending..." }%>					
+						</div>	
+					<% end %>
+				</div>
+			</div>
+		</div>
+    </div> <!-- main -->
+  </div> <!-- content -->
+</div> <!-- agency -->

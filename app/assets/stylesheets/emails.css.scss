@@ -1,0 +1,126 @@
+.email-template-wrap{
+	width:96%; 
+	margin: 2%; 
+	max-width:600px; 
+	display:block; 
+	margin:0 auto; 
+}
+.img-logo{
+	display:block; 
+	margin:20px auto;
+	max-width:200px;
+}
+
+.hero{
+	padding:20px 10px; text-align:center;
+}
+.hero h2{
+	font-size: 34px;    color: #202020;    font-weight: normal;    font-family: Helvetica;    margin-bottom: 10px;    margin-top: 0;	
+}
+
+.hero p{
+	font-size: 18px;    color: #202020;    font-weight: normal;    font-family: Helvetica;    margin: 0;
+}
+
+h3.second-title{
+	 font-size: 28px;    color: #202020;    font-weight: normal;    font-family: Helvetica;    margin-bottom: 10px;    text-align: center;
+}
+
+p.big{
+	 color: #202020;    font-family: Helvetica;    font-weight: bold;    text-align: center;    line-height: 35px;
+}
+p.big a{
+	color: #2BAADF;    font-weight: normal;    text-decoration: none;
+}
+p.event-title{
+	color: #202020;    font-family: Helvetica;    text-align: center;    line-height: 35px;    margin-top: 30px;
+}
+
+.events p{
+	color: #202020;    font-family: Helvetica;    line-height: 25px;    margin: 20px 0;
+}
+
+.button-blue{
+	width: 100%;    background: #2BAADF;    border: 0;    padding: 10px;    margin: 10px 0;    
+	border-radius: 4px;    font-size: 18px;    color: #fff;    font-weight: bold;    
+	 display: inline-block;    text-align: center;    font-family: Helvetica; text-decoration: none;
+}
+.button-grey{
+	 width: 100%;    background: none;    padding: 10px;    margin: 10px 0;    border-radius: 4px;    
+	 font-size: 18px;    color: #939393;    border: 2px solid;    font-weight: bold;     display: inline-block;   
+	  text-align: center;    font-family: Helvetica; text-decoration: none;
+}
+
+.faqs{
+
+}
+.faqs h3{
+	color: #202020;    font-family: Helvetica;    font-size: 25px;    text-align: center;   
+	 font-weight: normal;    line-height: 25px;
+}
+.faqs p.title{
+	 color: #202020;    font-family: Helvetica;    font-size: 18px;    text-align: center;    line-height: 25px;
+}
+.faqs p.content{
+	 color: #202020;    font-family: Helvetica;    font-size: 16px;    text-align: center;    line-height: 25px;
+}
+
+.faqs p.content a{
+	color: #2BAADF;    font-weight: normal;    text-decoration: underline;
+}
+
+ a.button-blue:hover{
+    background: #19759c;
+}
+
+a.button-grey:hover{
+    background:      #939393;
+    color: #fff;
+}
+
+hr.normal{
+	 margin: 30px 0; margin-top: 70px;   border: 1px solid #ddd;
+}
+hr.limit{
+	 margin: 20px 0;    border: 1px solid #ddd;
+}
+hr.hr-up{
+	 margin: 30px 0; margin-bottom: 50px; border: 1px solid #ddd;
+}
+
+img.normal{
+	display:block; margin: 20px auto;
+}
+
+img.avatar{
+	display:block; margin: 20px auto; width: 150px; height: 150px;
+}
+p.average{
+	color: #202020;    font-family: Helvetica;    font-size: 16px; margin-bottom: 30px;    text-align: center;    line-height: 25px;
+}
+p.average b{
+	color: #202020;    font-family: Helvetica;    font-size: 20px;    text-align: center;    line-height: 25px;
+}
+
+.footer{
+	background: #FAFAFA;    border-top: 2px solid #ccc;
+}
+
+.footer-content{
+	width:100%; max-width:600px; display:block; margin:0 auto;
+}
+.footer-content hr{
+	margin-top: 20px;    margin-bottom: 40px;
+}
+.footer-content p{
+	text-align: center;    font-style: italic;    color: #656565;    font-family: Helvetica;    font-size: 13px;    
+	line-height: 20px;
+}
+.footer-content p a{
+	color: #656565;
+}
+.footer-content {
+
+}
+
+

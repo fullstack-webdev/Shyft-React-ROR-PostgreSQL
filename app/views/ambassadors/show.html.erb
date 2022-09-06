@@ -1,0 +1,261 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#owl-carousel").owlCarousel({
+      items : 1,
+      itemsDesktop : [1199,4],
+      itemsDesktopSmall : [979, 3],
+      navigation : true,
+      autoHeight : true,
+      singleItem: true
+    });
+
+    $('#book-btn').on('click', function (e) {
+    	<% if !current_agency %>
+    		e.preventDefault()
+		<% end %>
+
+    	return;
+    });
+
+    $('#book-ambassador-modal').on('show.bs.modal', function (e) {
+    	<% if current_agency %>
+    		e.preventDefault()
+  			return e.preventDefault() // stops modal from being shown
+		<% end %>
+	})
+  });
+</script>
+
+<div class="profile">
+	<div class="container-fluid">
+		<div class="main-section row">
+			<div>
+		  	<% flash.each do |name, msg| %>
+		      <%= content_tag(:div, msg, class: "alert alert-info") %>
+		    <% end %>
+			</div>
+			<div class="content row">
+
+				<div class="col-sm-8">
+
+					<div class="username row">
+						<h1><%= @ambassador.first_name.capitalize %> <%= @ambassador.last_name.capitalize %> <small>Ambassador</small></h1>
+					</div> <!-- username -->
+					<div class="details row">
+
+						<div class="col-xs-6 location">
+							<% if @ambassador.city != "" %>
+								<h4><i class="fa fa-map-marker"></i> <%= @ambassador.city.capitalize %>, <%= @ambassador.state.capitalize %></h4>
+							<% end %>
+						</div> <!-- location -->
+
+						<div class="col-xs-6 status">
+							<h4><i class="fa fa-clock-o"></i> Available</h4>
+						</div> <!-- status -->
+					</div> <!-- details -->
+
+					<div class="brief row">
+			            <div id="owl-carousel">
+			              <% @ambassador.images.each_with_index do |image, index| %>
+			                <div class="item"> <%= attachment_image_tag(image, :file, :fit, 600, 600, class: 'img-responsive photo') %></div>
+			              <% end %>
+			            </div>
+        			</div> <!-- brief -->
+				</div> <!-- left-column col-sm-8 -->
+
+				<div class="col-sm-4">
+					<div class="booking-container">
+						<div class="overall-rating row">
+							<strong class="title">Rating: </strong><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i> <strong class="number-of-ratings">(<%= @ambassador.reviews.count %>)</strong>
+						</div> <!-- overall-rating -->
+						<div class="hourly-rate row">
+							$<span><strong class="amount"><%= number_to_currency(@ambassador.rate, precision: 0, unit: "") %></strong> <sup>CAD</sup><small class="per-unit pull-right">PER HOUR</small></span>
+						</div> <!-- hourly-rate -->
+						<div class="text_box">
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<% if @ambassador.response_time == 1 %>
+									 	<p><b>Avg. Response:</b> Less Than 60 mins</p>
+									<% else %>
+										<p><b>Avg. Response:</b> <%= @ambassador.response_time %> Hours</p>
+									<% end %>
+									<p><b>Acceptance:</b> <% if @ambassador.acceptance_rate == nil %>
+										100%
+										<% else %>
+											<%= @ambassador.acceptance_rate %>%</p>
+										<% end %>
+									<!-- <p><b>Roles:</b> <%= @ambassador.tag_list %></p> -->
+									<div class="book-button row col-md-12">
+										<!-- Trigger the modal with a button -->
+										<%= link_to "", class: 'btn btn-lg', id: 'message-btn', data: {target: "#messageMe", toggle: "modal" }, type: 'button' do %>
+									 		 <i class="fa fa-envelope-o"></i> Message Me !
+										<% end %>
+									</div> <!-- book-button -->
+
+									<!-- Trigger the modal with a button -->
+                  <% if !current_agency %>
+                  <%= button_to line_items_path(ambassador_id: @ambassador), class: 'btn btn-lg', id: 'book-btn', data: {target: "#book-ambassador-modal", toggle: "modal" }, type: 'button' do %>
+								 		<i class="glyphicon glyphicon-calendar"></i> Book <%= @ambassador.first_name.capitalize %>
+                    <% end %>
+									<% else %>
+                  <%= button_to new_event_session_path, class: 'btn btn-lg', id: 'book-btn', type: 'button', method: :get do %>
+                    <i class="glyphicon glyphicon-calendar"></i> Book <%= @ambassador.first_name.capitalize %>
+                    <% end %>
+                  <% end %>
+								</div> <!-- panel-body -->
+							</div> <!-- panel -->
+            			</div> <!-- end of text_box -->
+					</div> <!-- booking-container -->
+				</div> <!-- col-sm-4 -->
+			</div> <!-- content -->
+		</div> <!-- main-section -->
+
+		<div class="secondary-section row">
+			<div class="content row">
+				<div class="col-sm-8">
+					<div class="about">
+						<div class="title">About</div>
+						<div class="description">
+							<%= simple_format @ambassador.about %>
+						</div>
+					</div>
+
+					<% if @ambassador.reviews != [] %>
+						<div class="reviews">
+							<div class="title">Reviews</div>
+								<%= render @ambassador.reviews %>
+						</div>
+					<% end %>
+				</div> <!-- col-sm-8 -->
+
+				<div class="col-sm-4">
+<!-- <div class="col-sm-4"> -->
+					<div class="verifications row">
+						<div class="title text-center">
+							<h4>Verifications</h4>
+						</div> <!-- title -->
+						<div class="phone">
+							<div class="col-xs-2 text-center">
+							<% if @ambassador.phone_confirmed %>
+								<i class="fa fa-check-circle-o" id="verified"></i>
+							<% else %>
+								<i class="fa fa-exclamation-circle" id="unverified"></i>
+							<% end %>
+							</div> <!-- col-xs-2 -->
+							<div class="col-xs-10">
+								<p><strong>Phone: </strong><%= @ambassador.verification_phone_number %></p>
+							</div> <!-- col-xs-10 -->
+						</div> <!-- phone -->
+						<div class="email">
+							<div class="col-xs-2 text-center">
+							<% if @ambassador.email_confirmed %>
+								<i class="fa fa-check-circle-o" id="verified"></i>
+							<% else %>
+								<i class="fa fa-exclamation-circle" id="unverified"></i>
+							<% end %>
+							</div> <!-- col-xs-2 -->
+
+							<div class="col-xs-10">
+								<p><strong>Email: </strong><%= @ambassador.verification_email %></p>
+							</div> <!-- col-xs-10 -->
+						</div> <!-- email -->
+					</div> <!-- verifications		 -->
+					<div class="detailed-ratings">
+						<div class="title text-center">
+							<h4>Ratings</h4>
+						</div> <!-- title -->
+
+						<div class="complete row">
+							<div class="col-xs-6 text-right label">
+								<h6>Performance: </h6>
+							</div> <!-- col-xs-6 -->
+							<div class="col-xs-6 text-left stars">
+								<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+							</div> <!-- col-xs-6 -->
+						</div> <!-- complete -->
+
+						<div class="complete row">
+							<div class="col-xs-6 text-right label">
+								<h6>Timeliness: </h6>
+							</div> <!-- col-xs-6 -->
+							<div class="col-xs-6 text-left stars">
+								<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+							</div> <!-- col-xs-6 -->
+						</div> <!-- complete -->
+
+						<div class="complete row">
+							<div class="col-xs-6 text-right label">
+								<h6>Communication: </h6>
+							</div> <!-- col-xs-6 -->
+							<div class="col-xs-6 text-left stars">
+								<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+							</div> <!-- col-xs-6 -->
+						</div> <!-- complete -->
+
+						<div class="complete row">
+							<div class="col-xs-6 text-right label">
+								<h6>Reliability: </h6>
+							</div> <!-- col-xs-6 -->
+							<div class="col-xs-6 text-left stars">
+								<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+							</div> <!-- col-xs-6 -->
+						</div> <!-- complete -->
+					</div> <!-- detailed-ratings -->
+				</div>
+			</div> <!-- content -->
+		</div> <!-- secondary-section -->
+	</div> <!-- container-fluid -->
+</div> <!-- profile -->
+
+
+<!-- Modal -->
+<div id="messageMe" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+  <!-- Modal content-->
+  	<div class="modal-content">
+  		<div class="modal-header">
+    		<button type="button" class="close" data-dismiss="modal">&times;</button>
+    		<h4 class="modal-title">
+    		<% if !current_agency %>
+    			You need to be signed in to Message Ambassadors.
+			  <!-- <% else %>
+				Send a message to <%= @ambassador.first_name %> -->
+			<% end %>
+			</h4>
+  		</div> <!-- modal-header -->
+    		<div class="form">
+      		<% if !current_agency %>
+    			<%= render 'agency/sessions/new' %>
+          <% else %>
+            <p>
+            To send an ambassador a message, you must first create an event, book the ambassador, and when they confirm you'll be able to send them more details about the event.
+          </p>
+  				<!-- <% conversation = ambassador_conversation %>
+  				    <%= render 'messages/send_message_modal', conversation: conversation %> -->
+    		<% end %>
+    		</div> <!-- form -->
+  	</div> <!-- modal-content -->
+	</div> <!-- modal-dialog -->
+</div> <!-- End of Modal-->
+
+<!-- Modal -->
+<div id="book-ambassador-modal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+  <!-- Modal content-->
+  	<div class="modal-content">
+  		<div class="modal-header">
+    		<button type="button" class="close" data-dismiss="modal">&times;</button>
+    		<h4 class="modal-title">
+    		<% if !current_agency %>
+    			You need to be signed in to Book Ambassadors.
+			<% end %>
+			</h4>
+  		</div> <!-- modal-header -->
+    		<div class="form">
+      		<% if !current_agency %>
+    			<%= render 'agency/sessions/new' %>
+    		<% end %>
+    		</div> <!-- form -->
+  	</div> <!-- modal-content -->
+	</div> <!-- modal-dialog -->
+</div> <!-- End of Modal-->

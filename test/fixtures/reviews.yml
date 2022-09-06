@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyText
+  name: MyString
+  email: MyString
+  rating: 9.99
+  ambassador_id: 
+
+two:
+  content: MyText
+  name: MyString
+  email: MyString
+  rating: 9.99
+  ambassador_id: 

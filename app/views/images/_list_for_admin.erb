@@ -1,0 +1,10 @@
+  <div class="col-sm-2 multi-field">
+    <div id="photos">
+      <%= attachment_image_tag(img, :file, :fill, 100, 100) %>
+      <span class="pull-right">
+        <%= link_to img, remote: true, method: :delete do %>
+          <i class="fa fa-times fa-lg remove-field"></i>
+        <% end %>
+      </span>   
+    </div>    
+  </div>

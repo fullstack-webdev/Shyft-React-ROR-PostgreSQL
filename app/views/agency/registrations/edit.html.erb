@@ -1,0 +1,83 @@
+<div class="account-settings row">
+  <div class="content row">
+    <div class="main row"><br />
+      <div class="panel panel-default">       
+        <div class="panel-heading"><h2>Edit <%= resource_name.to_s.humanize %></h2></div>
+
+          <%= simple_form_for(resource, as: resource_name, url: edit_agency_registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
+            <div class="panel-body">
+              <div class="form-inputs">
+
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-thumbs-up"></i></div>
+                    <%= f.text_field :first_name, class: "form-control", placeholder: 'First name', autofocus: true, required: true %>
+                  </div> <!-- input -->
+                </div> <!-- form -->
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-thumbs-up"></i></div>
+                    <%= f.text_field :last_name, class: "form-control", placeholder: 'Last name', autofocus: true, required: true %>
+                  </div> <!-- input -->
+                </div> <!-- form -->
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-briefcase"></i></div>
+                    <%= f.text_field :company_name, class: "form-control", placeholder: 'Company Name', autofocus: true, required: true %>
+                  </div> <!-- input-group -->
+                </div> <!-- form-group -->
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+                    <%= f.phone_field :phone_number, class: "form-control", placeholder: 'Phone number', autofocus: true, required: true %>
+                  </div> <!-- input-group -->
+                </div> <!-- form-group -->
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                    <%= f.email_field :email, class: "form-control", placeholder: 'Email', autofocus: true, required: true %>
+                  </div> <!-- input-group -->
+                </div> <!-- form-group --> 
+
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                <% end %>
+                <h4> Change Password</h4>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: 'Password', autofocus: true, hint: "leave it blank if you don't want to change it", required: false, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
+                  </div> <!-- input-group -->
+                </div> <!-- form-group -->
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                    <%= f.password_field :password_confirmation, class: "form-control", placeholder: 'Confirm password', autofocus: true, hint: "leave it blank if you don't want to change it", required: false %>
+                  </div> <!-- input-group -->
+                </div> <!-- form-group -->
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                    <%= f.password_field :current_password, class: "form-control",placeholder: "leave it blank if you don't want to change it", autofocus: true, hint: "leave it blank if you don't want to change it", required: false %>
+                  </div> <!-- input-group -->
+                </div> <!-- form-group -->
+              </div>
+
+              <div class="form-actions">
+                <%= f.submit "Update Account", class: "btn btn-primary", id: "verify-btn", data: { disable_with: "Updating ..." }%>
+              </div>
+            <% end %>
+
+            <h4>Cancel my account</h4>
+
+            <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+            <%= link_to "Back", :back %>
+          </div> <!-- body -->
+
+        </div> <!-- panel -->
+    </div> <!-- main -->
+  </div> <!-- content -->
+</div> <!-- agency -->

@@ -1,0 +1,11 @@
+<tr>
+  <td><% if !item.ambassador.profile_photo.nil? %>
+      <%= attachment_image_tag(item.ambassador.profile_photo, :file, :fill, 50, 50, class: 'booking-avatar')%>
+    <% else %>
+      <%= image_tag "shyft-d-profile.png", class: 'img-responsive text-center', style:"width:50px;height:50px;" %>
+    <% end %>
+  </td>  
+  <td><%= item.ambassador_name %>:</td>
+  <td><%= item.total_hours %> hours @ <%= number_to_currency((item.total_cost / item.total_hours), precision: 0, unit: "$") %>/hour</td>
+  <td><%= number_to_currency(item.total_cost, precision: 2, unit: "$") %></td>
+</tr>

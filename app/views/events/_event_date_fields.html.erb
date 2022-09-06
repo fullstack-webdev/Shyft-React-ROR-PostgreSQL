@@ -1,0 +1,57 @@
+<div class="row event-section">
+	<div class="title">
+		<div class="col-sm-12">
+			<h3>Event Date</h3>
+		</div>
+	</div>
+<hr>
+
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="form-group">
+        <div class='input-group date' id='datetimepicker1' />
+          <%= f.text_field :event_date, placeholder: "Select Event Date", class: "form-control", type:'text' %>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div> <!-- date -->
+	    </div> <!-- form-group -->
+	  </div> <!-- col -->
+    <div id="datepairExample">
+	    <div class="col-sm-2">
+	      <%= f.text_field :start_time, placeholder: "Start Time", class: 'time start form-control' %> 
+	    </div> <!-- col -->
+	    <div class="col-sm-2 text-center">to</div>
+	    <div class="col-sm-2">
+	      <%= f.text_field :end_time, placeholder: "End Time", class: 'time end form-control' %> 
+	    </div> <!-- col -->
+    </div> <!-- datepairExample -->
+    <div class="col-sm-2">
+    	<small>
+    		<%= f.check_box :_destroy %>
+				<%= f.label :_destroy, "Remove" %>
+			</small>
+		</div> <!-- col -->
+
+  </div> <!-- row -->
+
+		<script type="text/javascript">
+		  var nowDate = new Date();
+		  var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), 0, 0, 0, 0);
+		    $(function () {
+		        $('#datetimepicker1').datetimepicker({
+		          format: "MMM DD, YYYY",
+		          defaultDate: nowDate,
+		          minDate: today                                                          
+		        });                                
+		        $("#datetimepicker1").on("dp.change", function (e) {
+		                   
+		        });
+        });
+		</script>  
+
+</div> <!-- row --> 
+
+<%= f.fields_for :event_roles do |builder| %>
+	<%= render "event_role_fields", :f => builder %>	
+<% end %>

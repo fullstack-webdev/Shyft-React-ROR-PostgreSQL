@@ -1,0 +1,46 @@
+<div class="row">	
+	<div class="row"></div>
+		<div class="col-xs-10">
+			<h3> Edit Event </h3>
+		</div>	
+		<div class="col-xs-2">
+			<small>
+			<div class="remove-date">
+				<%= link_to delete_event_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
+		      <span class="glyphicon glyphicon-trash"></span>
+		        Delete
+		    <% end %>
+		  </div>
+		  </small>
+	  </div>
+	</div>
+	<hr>
+
+		<%= form_for @event, :url=>event_path(@event) do |f| %>
+		<div class="event-section">
+			<div class="row">
+				<div class="col-sm-2">
+					<%= f.label :name, 'Event Name' %>
+				</div> <!-- col-sm-2 -->
+				<div class="col-sm-6">
+				 	<%= f.text_field :name, :required => true, placeholder: "Name", :maxlength => 200, class: "form-control" %><br>
+				</div> <!-- col-sm-6 -->
+				<div class="col-sm-4"></div>
+			</div> <!-- row -->
+		
+			<div class="row">
+				<div class="col-sm-2">
+					<%= f.label :event_details, 'Event Details' %>
+				</div> <!-- col-sm-2 -->
+				<div class="col-sm-6">
+			    <%= f.text_area :event_details, :required => true, placeholder: "What are some of the event details", class: "form-control" %>
+				</div> <!-- col-sm-6 -->
+				<div class="col-sm-4"></div>
+			</div> <!-- row -->
+		</div>
+			<%= f.fields_for :event_locations do |builder| %>
+				<%= render "location_fields", :f => builder %>
+			<% end %>
+			<%= f.submit "Save Changes", :class => 'submit_button', id: "book-btn" %>
+		<% end %> 
+	</div>	

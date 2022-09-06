@@ -1,0 +1,75 @@
+<% provide(:title, "Become an ambassador") %>
+<% provide(:description, "Want to get extra work as an ambassador? Create a profile, get approved, accept booking requests and get paid!") %>
+<div class="hiw container-fluid">
+	<div class="row">
+		<div class="how-to-get-work-background">
+			<div class="layer">
+			  <div class="hiw-layer">
+			    <div class="how-header">
+			      <div class="title">
+			        <h1>Become an Ambassador</h1>
+			      </div> <!-- title -->
+			      <div class="subheader">
+			        <h3>Learn how to book events in your area.</h3>
+			      </div> <!-- subheader -->
+			    </div> <!-- how-header -->
+			  </div> <!-- hiw-layer -->
+			</div>
+		</div> <!-- how-background -->
+	</div> <!-- row -->
+	<div class="content">
+		<div class="col-md-4 sidebar">
+			<%= render 'layouts/public/hiw' %>
+		</div>
+		<div class="col-md-8">
+			<div class="row" id="signup">
+				<div class="panel">
+					<div class="panel-body">
+						<div class="col-md-8">
+							<h3>List Your Profile</h3>
+							<p>Signing up is free. First, tell us about yourself and your event experience. Than we will assist you to create your profile.</p>
+							<p>When you're ready to start working events, you can publish your profile for the world to see.</p>
+							<!-- <small class="learn-more"><a href>Learn More</a></small> -->
+						</div>
+						<div class="col-md-4 text-center hiw-icon">
+							<i class="fa fa-pencil-square-o fa-5x"></i>
+						</div>
+					</div>
+				</div>
+			</div>				
+
+			<div class="row" id="approved">
+				<div class="panel">
+					<div class="panel-body">
+						<div class="col-md-8">
+							<h3>Respond to Requests</h3>
+							<p>Companies who love your profile will want to book you for their event! On Shyft, you have the option to require companies to send a booking request or allow certain companies to book you instantly through Instant Book.</p>
+							<p>Once you have received a booking request you will have 24 hours to respond or it will be cancelled.</p>
+							<!-- <small class="learn-more"><a href>Learn More</a></small> -->
+						</div>
+						<div class="col-md-4 text-center hiw-icon">
+							<i class="fa fa-refresh fa-5x"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row" id="accept">
+				<div class="panel">
+					<div class="panel-body">
+						<div class="col-md-8">
+							<h3>Work Events</h3>
+							<p>Once you have a confirmed event, it’s time to prepare for the event! The company will contact you to set up training so you can put the brand's best foot forward when you represent them.</p>
+							<p>Getting paid is simple. On top of being a great ambassador, you just have to check-in and check-out on time from the event and you will receive an email or PayPal transfer within 48 hours after it ends.</p>
+							<!-- <small class="learn-more"><a href>Learn More</a></small> -->
+						</div>
+						<div class="col-md-4 text-center hiw-icon">
+							<i class="fa fa-check-square-o fa-5x"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<%= render 'layouts/public/questions' %>

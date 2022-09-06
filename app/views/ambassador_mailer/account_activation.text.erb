@@ -1,0 +1,11 @@
+Hello <%= @ambassador.first_name.capitalize  %>,
+
+Welcome to Shyft! We are excited you want to join the team. But first, click the link below to complete your profile. Once complete we will review your information than call your provided phone number to activate your account!
+
+<%= link_to "Edit your Profile", edit_ambassador_activation_url(@ambassador.activation_token, email: @ambassador.email) %>
+
+Message me back if you have any questions.
+
+Chris
+Shyft, Cofounder
+t: 1 (800) 719-6778

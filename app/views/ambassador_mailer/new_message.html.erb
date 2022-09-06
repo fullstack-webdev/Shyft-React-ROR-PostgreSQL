@@ -1,0 +1,7 @@
+<p>Hello <%= @ambassador.first_name.capitalize %>,</p>
+
+<p>You've just received a new message from <%= @agency.first_name.capitalize %> @ <%= @agency.company_name.capitalize %>: </p>
+
+<p><%= @message.content %></p>
+
+<h3><%= link_to "Reply", conversation_messages_url(@message.conversation_id) %></h3>

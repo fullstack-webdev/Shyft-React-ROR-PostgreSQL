@@ -1,0 +1,210 @@
+<% provide(:title, "Ambassadors") %>
+<% provide(:description, "Explore Shyft: Filter ambassadors by availability, repeat hires, response time, ratings, proximity to event location and more...") %>
+<div class="ambassadors">
+	<div class="event-creation text-center">
+		<div class="content">
+			
+			<!-- Button trigger modal -->
+			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+			  Add event details 
+			</button>
+
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+			      </div>
+			      <div class="modal-body">
+			      	<div class="form-group">
+				      	<label for="eventName">Event Name</label>
+				      	<input type="text" class="form-control" id="eventNameInput" placeholder="Event Name">
+				      </div>
+				      <div class="form-group">
+				      	<label for="eventDetails">Event Details</label>
+				      	<input type="textarea" class="form-control" id="exampleInputEmail1" placeholder="Event details here">
+				      </div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary">Save changes</button>
+			      </div> <!-- modal-footer -->
+			    </div> <!-- modal-content -->
+			  </div> <!-- modal-content -->
+			</div> <!-- modal -->
+
+			<div class="date-planner">
+				<table class="table table-sm">
+				  <thead>
+				    <tr>
+				      <th class="text-center">Saturday, Feb 13</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td>12pm-3pm image</td>
+				    </tr>
+				    <tr>
+				      <td>+</td>
+				    </tr>
+				  </tbody>
+				</table>
+			</div> <!-- date-planner -->
+
+		</div> <!-- content -->
+	</div> <!-- event-creation -->
+
+
+	<div class="alt-shortlist-background">
+		<div class="content row">
+			<div class="heading row">
+
+				<div class="col-sm-2 col-sm-offset-3 title text-left">
+					<h2>Shortlist</h2>
+				</div>
+				<div class="col-sm-3 col-sm-offset-4 sort">
+		      <div class="form-group">
+		      	<label>Sort by:
+              <select class="form-control">
+                <option>Highest Availability</option>
+                <option>Most Booked</option>
+                <option>Response Time</option>
+                <option>Highest Rating</option>
+              </select>
+            </label>
+          </div> <!-- option -->
+				</div>
+			</div> <!-- sort -->
+
+			<div class="row">
+				<div class="filters col-sm-3">
+					<div class="panel panel-default">
+					  <div class="panel-body">
+					  	<h4>Role</h4>
+					    <h4>Rate</h4>
+					    <h4>Distance</h4>
+					    <h4>Certification</h4>
+					    <h4>Language</h4>
+					  </div>
+					</div>
+				</div> <!-- filters -->
+
+				<div class="results col-sm-9">
+					<div class="panel panel-default">
+					  <div class="panel-body">
+					    <div class="image col-sm-2">
+					    	<%= image_tag "cphollister1.jpg", alt: "CPHollister 1", class: "img-responsive img-circle" %>
+					    </div> <!-- image -->
+					    <div class="details col-sm-6">
+					    	<div class="primary-info row">
+						    	<div class="col-sm-6">
+						    		<h4>Chris Hollister</h4>
+						    	</div>
+						    	<div class="col-sm-6">
+						    		Available 1/1
+						    	</div>
+						    </div>
+						 		<div class="secondary-info">
+						 			<div class="col-sm-12">
+					    			<p>Ambassador profile #1 here</p>
+					    			<p></p>
+					    		</div>
+					    	</div>
+					    </div> <!-- details -->
+					    <div class="action col-sm-4">
+					    	<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+								  Book
+								</button>
+
+								<script>
+								  $('#myButton').on('click', function () {
+								    var $btn = $(this).button('Booking')
+								    // business logic...
+								    $btn.button('reset')
+								  })
+								</script>
+					    </div> <!-- action -->
+					  </div>
+					</div>
+					<div class="panel panel-default">
+					  <div class="panel-body">
+					    <div class="image col-sm-2">
+					    	<%= image_tag "ambassador2.jpg", alt: "CPHollister 1", class: "img-responsive img-circle" %>
+					    </div> <!-- image -->
+					    <div class="details col-sm-6">
+					    	<h4>Chris Hollister</h4>
+					    	<p>Ambassador profile #1 here</p>
+					    	<p></p>
+					    </div> <!-- details -->
+					    <div class="action col-sm-4">
+					    	<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+								  Book
+								</button>
+
+								<script>
+								  $('#myButton').on('click', function () {
+								    var $btn = $(this).button('Booking')
+								    // business logic...
+								    $btn.button('reset')
+								  })
+								</script>
+					    </div> <!-- action -->
+					  </div>
+					</div>
+					<div class="panel panel-default">
+					  <div class="panel-body">
+					    <div class="image col-sm-2">
+					    	<%= image_tag "ambassador3.jpg", alt: "CPHollister 1", class: "img-responsive img-circle" %>
+					    </div> <!-- image -->
+					    <div class="details col-sm-6">
+					    	<h4>Chris Hollister</h4>
+					    	<p>Ambassador profile #1 here</p>
+					    	<p></p>
+					    </div> <!-- details -->
+					    <div class="action col-sm-4">
+					    	<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+								  Book
+								</button>
+
+								<script>
+								  $('#myButton').on('click', function () {
+								    var $btn = $(this).button('Booking')
+								    // business logic...
+								    $btn.button('reset')
+								  })
+								</script>
+					    </div> <!-- action -->
+					  </div>
+					</div>
+					<div class="panel panel-default">
+					  <div class="panel-body">
+					    <div class="image col-sm-2">
+					    	<%= image_tag "ambassador4.jpg", alt: "CPHollister 1", class: "img-responsive img-circle" %>
+					    </div> <!-- image -->
+					    <div class="details col-sm-6">
+					    	<h4>Chris Hollister</h4>
+					    	<p>Ambassador profile #1 here</p>
+					    	<p></p>
+					    </div> <!-- details -->
+					    <div class="action col-sm-4">
+					    	<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+								  Book
+								</button>
+
+								<script>
+								  $('#myButton').on('click', function () {
+								    var $btn = $(this).button('Booking')
+								    // business logic...
+								    $btn.button('reset')
+								  })
+								</script>
+					    </div> <!-- action -->
+					  </div>
+					</div>
+				</div> <!-- results -->
+			</div> <!-- row -->
+		</div> <!-- content -->
+	</div> <!-- shortlist-background -->
+</div> <!-- ambassadors -->

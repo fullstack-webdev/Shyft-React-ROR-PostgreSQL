@@ -1,0 +1,99 @@
+<div class="email-template-wrap">
+
+	<a href="#">
+		<%= image_tag attachments["logo.png"].url, alt: "Shyft", class: "img-logo" %>
+	</a>
+
+	<div class="hero">
+		<h2 >New Booking Request</h2>
+		<p >Thumbs up!</p>
+	</div>
+
+	<div>
+		<p class="big">You have a new booking request for <%= @item.total_hours %> hours. Way to go! Please review the details below and let <%= @agency.company_name %> know by <%=@expire_time %> (within 2 hours) or they will have to ask someone else. </p>
+	</div>
+	<p class="event-title"><b>Event Name:</b> <%= @event.name %></p>
+
+	<div class="events">
+		<p>
+			<b>Event Details:</b> <br>
+			<%= @event.event_details %>
+		</p>
+
+    <p>
+      <%= render partial: "summary", locals: {
+        role_rates: @role_rates,
+        subtotal_earnings: @subtotal_earnings,
+        platform_fee: @ambassador_service_fee,
+        platform_fee_total: @ambassador_service_fee_total,
+        total_earnings: @total_earnings } %>
+    </p>
+
+    <p><b>Schedule:</b></p>
+		<% @schedules.each do |schedule| %>
+			<p>
+				<%= schedule[:date] %><br>
+				<%= schedule[:startTime] %> - <%= schedule[:endTime] %><br>
+				<%= schedule[:location] %>
+        <%= schedule[:notes] %>
+			</p>
+		<% end %>
+
+		<a href="<%=book_request_accept_confirm_booking_url(@request_token) %>" class="button-blue" ">Confirm Shifts!</a>
+
+		<a href="<%=book_request_decline_confirm_booking_url(@request_token) %>" class="button-grey" ">Doesn't Fit My Schedule</a>
+
+    	<hr class="limit">
+
+		<div class="faqs">
+			<h3 >FAQ's</h3>
+
+			<p class="title"><b>Why do I only have two hours to respond?</b></p>
+			<p class="content">In this day and age, everything moves quickly. That being said agencies would like to know if you can accept the shifts asap. These shifts are only being offered to you and you have the full two hours to respond however the faster you respond the better your rating will be.</p>
+			<p class="title"><b>What happens if I “Accept” and can’t make it to the shifts?</b></p>
+			<p  class="content">We understand. Life happens. If you can’t make it to the shifts please respond to this email ASAP to allow time for the agency to hire a new ambassador.</p>
+			<p class="title"><b>If I need to cancel does this count against my rating?</b></p>
+			<p  class="content">All ambassadors have a rating so agencies can book with confidence. If you have to cancel your shift this does impact your rating.</p>
+			<p class="title"><b>If I decline the booking request, what happens?</b></p>
+			<p  class="content">Some events are not a good fit for everyone. If this one is not a good fit for you please go to <a href="#" >www.shyftworks.com/login </a> and update your availability. If you decline this event or it takes you longer than 2 hours to respond we do factor this into your Acceptance Rate.</p>
+			<p class="title" ><b>If you have any questions please feel free to respond to this email.</b></p>
+		</div>
+
+		<hr class="normal">
+		<% if !@avatar_image.present? %>
+			<%= image_tag attachments['avatar.png'].url, alt: 'Shyft', class: 'avatar' %>
+		<% else %>
+			<%= image_tag @avatar_image_url, alt: 'Shyft', class: 'avatar' %>
+		<% end %>
+		<% if attachments['stars.png'].present?  %>
+			<%= image_tag attachments['stars.png'].url, alt: 'Shyft', class: 'normal' %>
+		<% end %>
+		<p class="average">Average Response Time<br>
+			<b ><%= @ambassador.response_time %> minutes </b>
+		</p>
+		<p class="average">Acceptance Rate<br>
+			<b><%= @ambassador.acceptance_rate %>%</b>
+		</p>
+	</div>
+</div>
+
+
+<div class="footer" >
+
+	<div class="footer-content">
+
+		<hr>
+
+		<p>Copyright © *|CURRENT_YEAR|* *|LIST:COMPANY|*, All rights reserved.<br>
+		*|IFNOT:ARCHIVE_PAGE|* *|LIST:DESCRIPTION|*</p>
+
+		<p><b>Our mailing address is:</b> <br>
+		*|HTML:LIST_ADDRESS_HTML|* *|END:IF|*</p>
+
+		<p>Want to change how you receive these emails?<br>
+		You can <a href="#" >update your preferences</a> or<a href="#" > unsubscribe from this list</a></p>
+
+		<p>*|IF:REWARDS|* *|HTML:REWARDS|* *|END:IF|*</p>
+	</div>
+
+</div>

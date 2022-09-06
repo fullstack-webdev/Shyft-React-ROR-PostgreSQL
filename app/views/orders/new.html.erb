@@ -1,0 +1,230 @@
+<% provide(:title, 'Booking') %>
+
+
+<div class="booking">
+	<div class="background">
+		<div class="content row">
+
+		<%= form_for @order, html: {id: :new_order } do |f| %>
+		  <% if @order.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+		      <ul>
+		      <% @order.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+
+      <div id="flash-messages"></div>
+
+	    <%= javascript_include_tag "https://js.stripe.com/v2/" %>
+			<script>
+        Stripe.setPublishableKey('pk_test_bJxH594xHS6MdHG2ZsTZGAUR');
+      </script>
+
+			<div class="col-md-8 primary">
+				<div class="payment row">
+					<div class="title row">
+						<div class="col-sm-12">
+							<h2>Payment</h2>
+						</div>
+					</div>
+					<div class="name row">
+						<div class="col-sm-5">
+    					<%= f.text_field :full_name, "data-stripe" => "name", class: "form-control", placeholder: 'Full Name', autofocus: true, required: true %>
+						</div>
+					</div>
+					<div class="card-number row">
+						<div class="col-sm-5">
+				      <%= text_field_tag :card_number, nil, class: "form-control", "data-stripe" => "number", placeholder: '16 digit card number', autofocus: true, required: true %>
+
+						</div>
+						<div class="col-sm-5">
+				        <select class="form-control">
+									<option>Visa</option>
+									<option>MasterCard</option>
+									<option>American Express</option>
+								</select>
+						</div>
+					</div>
+					<div class="authentication row">
+							<div class="col-sm-5">
+
+							  <%= select_tag :exp_month, options_for_select(Date::MONTHNAMES.compact.each_with_index.map { |name,i| ["#{i+1} - #{name}", i+1] }), include_blank: false, "data-stripe" => "exp-month", class: "form-control left", autofocus: true, required: true %>
+							</div>
+							<div class="col-sm-3">
+  							<%= select_tag :exp_year, options_for_select((Date.today.year..(Date.today.year+10)).to_a), include_blank: false, "data-stripe" => "exp-year", class: "form-control", autofocus: true, required: true %>
+							</div>
+							<div class="col-sm-2">
+					      <%= text_field_tag :card_verification, nil, class: "form-control", "data-stripe" => "cvc", placeholder: 'CVC', autofocus: true, required: true %>
+							</div>
+					</div>
+				</div> <!-- payment -->
+				<hr>
+				<div class="billing row">
+					<div class="title row">
+						<div class="col-sm-12">
+							<h2>Billing Details</h2>
+						</div>
+					</div>
+					<div class="company row">
+						<div class="col-sm-8">
+    						<%= f.text_field :company, class: "form-control", placeholder: 'Company name', autofocus: true, required: true %>
+						</div>
+					</div>
+					<div class="company row">
+						<div class="col-sm-8">
+    						<%= f.email_field :email, "data-stripe" => "email", class: "form-control", placeholder: 'Email', autofocus: true, required: true %>
+						</div>
+					</div>
+					<div class="telephone row">
+						<div class="col-sm-8">
+    					<%= f.phone_field :telephone, class: "form-control", placeholder: 'Phone Number', autofocus: true, required: true %>
+						</div>
+					</div>
+					<div class="address_1 row">
+						<div class="col-sm-8">
+    					<%= f.text_field :address_1, "data-stripe" => "address_line1", class: "form-control", placeholder: 'Address 1', autofocus: true, required: true %>
+						</div>
+					</div>
+					<div class="address_2 row">
+						<div class="col-sm-8">
+    					<%= f.text_field :address_2, "data-stripe" => "address_line2", class: "form-control", placeholder: 'Address 2', autofocus: true %>
+						</div>
+					</div>
+					<div class="authentication row">
+						<div class="col-sm-5">
+							<%= f.text_field :city, "data-stripe" => "address_city", class: "form-control", placeholder: 'City', autofocus: true, required: true %>
+						</div>
+						<div class="col-sm-3">
+    					<%= f.text_field :state, "data-stripe" => "address_state", class: "form-control", placeholder: 'State/Province', autofocus: true, required: true %>
+						</div>
+					</div>
+					<div class="authentication row">
+						<div class="col-sm-3">
+    					<%= f.text_field :zip_code, "data-stripe" => "address_zip", class: "form-control", placeholder: 'Zip Code', autofocus: true, required: true %>
+						</div>
+						<div class="col-sm-5">
+    					<%= f.text_field :country, "data-stripe" => "address_country", class: "form-control", placeholder: 'Country', autofocus: true, required: true %>
+						</div>
+					</div>
+				</div> <!-- Billing -->
+				<hr>
+				<div class="terms row">
+					<div class="col-sm-12">
+						<p>By clicking on "Request to Book", you agree to pay the total amount shown, which includes Service Fees, on the right and to the <%= link_to 'Terms of Use', terms_of_use_path %>, <%= link_to 'Event Rules', event_rules_path %>, <%= link_to 'Cancellation Policy', cancellation_policy_path %> and <%= link_to 'Refund Policy', refund_policy_path %>.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+
+							<div class="actions">
+						    <%= f.submit "Request to Book", class: "btn btn-lg", id: "book-btn", type: "submit" do %>
+						    	<i class="fa fa-bolt"></i>
+						    <% end %>
+						  </div>
+
+					</div>
+
+				</div> <!-- book-button -->
+				<div class="response row">
+					<div class="col-sm-12">
+						<p>They'll have 24 hours to reply. You will only be charged if the ambassador accepts your request. If the ambassador declines or does not respond, no charge is made.</p>
+					</div>
+				</div>
+			</div> <!-- col-sm-8 -->
+
+			<div class="col-md-4 secondary">
+				<div class="invoice row">
+
+					<div class="box">
+						<div class="profile row">
+							<div class="col-sm-12">
+								<h4>Booking Lineup</h4>
+								<!--
+								<select class="form-control">
+									<option>Molson Sampling</option>
+									<option>RBC Handout</option>
+									<option>Canadian Tire</option>
+									<option>Nestle Chocolate</option>
+								</select> -->
+							</div> <!-- col-sm-6 -->
+						</div> <!-- profile -->
+						<hr>
+						<div class="dates">
+							<div class="row">
+										<%= render @cart %>
+										<% @cart.line_items.each do |item| %>
+									<% end %>
+								</div>
+							</div> <!-- col-sm-5 -->
+						</div>
+						<hr>
+						<div class="agree">
+							<div class="policy row">
+								<div class="type col-sm-7">
+									<p>Cancellation Policy</p>
+								</div> <!-- col-sm-7 -->
+								<div class="details col-sm-5">
+									<p><%= link_to '12 Hour', cancellation_policy_path %></p>
+								</div> <!-- col-sm-5 -->
+							</div> <!-- policy -->
+							<div class="policy row">
+								<div class="type col-sm-7">
+									<p>Event Policy</p>
+								</div> <!-- col-sm-7 -->
+								<div class="details col-sm-5">
+									<p><%= link_to 'Review', event_rules_path %></p>
+								</div> <!-- col-sm-5 -->
+							</div> <!-- policy -->
+						</div> <!-- agree -->
+						<hr>
+						<div class="summary">
+							<div class="line-item row">
+								<div class="details col-sm-7">
+									<p>Sub-total</p>
+								</div> <!-- col-sm-6 -->
+								<div class="sub-total col-sm-5">
+									<p>$<span><%= number_to_currency(@cart.subtotal, precision: 2, unit: "") %><sup>CAD</sup></p>
+								</div> <!-- col-sm-6 -->
+
+
+							</div> <!-- line-item -->
+							<div class="line-item row">
+								<div class="details col-sm-7">
+									<p>Service Fee <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="5% 	Payment Processing"></i></p>
+									<script>$('[data-toggle="tooltip"]').tooltip();</script>
+								</div> <!-- col-sm-6 -->
+								<div class="sub-total col-sm-5">
+									<p>$<span><%= number_to_currency(@cart.service_fee, precision: 2, unit: "") %><sup>CAD</sup></p>
+								</div> <!-- col-sm-6 -->
+							</div> <!-- line-item -->
+						</div> <!-- total -->
+						<hr>
+						<div class="total row">
+							<div class="details col-sm-7">
+								<p>Total</p>
+							</div> <!-- col-sm-6 -->
+							<div class="sub-total col-sm-5">
+								<p>$<span><%= number_to_currency(@cart.total_price, precision: 2, unit: "") %><sup>CAD</sup></p>
+							</div> <!-- col-sm-6 -->
+
+
+								<% end %>
+
+						</div> <!-- line-item -->
+					</div> <!-- box -->
+
+					<div class="expedite-ssl">
+						<a href='https://www.expeditedssl.com/simple-ssl-scanner/scan?target_domain=www.shyftworks.com' target='_blank'><img src='https://www.expeditedssl.com/ssl-secure-badge.png'  alt='Expedited SSL Scanner'></a>
+					</div>
+				</div> <!-- invoice -->
+			</div> <!-- col-sm-4 -->
+
+
+		</div> <!-- content -->
+	</div> <!-- background -->
+</div> <!-- booking -->

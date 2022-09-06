@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sunday_start: 1
+  sunday_end: 1
+  monday_start: 1
+  monday_end: 1
+  tuesday_start: 1
+  tuesday_end: 1
+  wednesday_start: 1
+  wednesday_end: 1
+  thursday_start: 1
+  thursday_end: 1
+  friday_start: 1
+  firday_end: 1
+  saturday_start: 1
+  saturday_end: 1
+  ambassador_id: 1
+
+two:
+  sunday_start: 1
+  sunday_end: 1
+  monday_start: 1
+  monday_end: 1
+  tuesday_start: 1
+  tuesday_end: 1
+  wednesday_start: 1
+  wednesday_end: 1
+  thursday_start: 1
+  thursday_end: 1
+  friday_start: 1
+  firday_end: 1
+  saturday_start: 1
+  saturday_end: 1
+  ambassador_id: 1

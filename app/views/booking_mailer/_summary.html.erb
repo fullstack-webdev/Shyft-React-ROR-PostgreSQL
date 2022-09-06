@@ -1,0 +1,8 @@
+<p>
+  <!-- <b>Total:</b> <% role_rates.each do |key, value| %>
+                  <%= number_with_precision(value.to_f, precision: 2) %> Hours @ <%= number_to_currency(key, precision: 2, unit: "$")%><br>
+                <% end %> -->
+  <b>Subtotal:</b> <%= number_to_currency(subtotal_earnings, precision: 2, unit: "$") %> <br>
+  <b>Platform fee (<%= number_with_precision(platform_fee.to_f * 100, precision: 0) %>%):</b> <%= number_to_currency(platform_fee_total, precision: 2, unit: "$") %> <br>
+  <b>Payout:</b> <%= number_to_currency(total_earnings, precision: 2, unit: "$") %> <br>
+</p>

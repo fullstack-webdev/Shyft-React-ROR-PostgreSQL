@@ -1,0 +1,33 @@
+<div class="account-settings row">
+  <div class="content row">
+    <div class="main row"><br />
+      <% flash.each do |name, msg| %>
+      	<%= content_tag(:div, msg, class: "alert alert-info") %>
+      <% end %>
+      <div class="title">
+        <h2>Dashboard</h2>
+      </div>
+      <div id="exTab2" class="container"> 
+        <ul class="nav nav-tabs">
+            <li class="active">
+              <a  href="#1" data-toggle="tab">Current Events</a>
+            </li>
+            <li><a href="#2" data-toggle="tab">Past Events</a>
+            </li>
+            
+        </ul>
+
+        <div class="tab-content ">
+          <div class="tab-pane active" id="1">
+            <%= render partial:'event_panel', locals: {events: @current_events, show_cancel: true} %>
+          </div>
+          <div class="tab-pane" id="2">
+            <%= render partial:'event_panel', locals: {events: @past_events, show_cancel: false} %>
+          </div>
+          
+        </div>
+      </div> <!-- tab view -->
+    </div> <!-- main -->
+  </div> <!-- content -->
+</div> <!-- account-settings -->
+

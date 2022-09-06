@@ -1,0 +1,4 @@
+New Account Created
+<%= @ambassador.first_name %> <%= @ambassador.last_name %>, <%= @ambassador.email %>
+
+<%= link_to 'View Profile', ambassador_path(@ambassador) %>

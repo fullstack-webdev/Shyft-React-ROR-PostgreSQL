@@ -1,0 +1,57 @@
+<% provide(:title, "Available ambassadors") %>
+<% provide(:description, "Explore Shyft: Filter ambassadors by availability, repeat hires, response time, ratings, proximity to event location and more...") %>
+<div class="ambassadors">
+	<div class="shortlist-background">
+		<div class="content row text-center">
+			<div class="sort row">
+				<div class="col-sm-3">
+					<select class="form-control">
+						<option>Toronto</option>
+					</select>
+				</div>
+				<div class="col-sm-3">
+					<div class="option">
+						<%= search_form_for @search do |f| %>
+						<%= f.select :roles_cont, @role_types, {include_blank: "Select Role"}, {class: 'form-control'} %>
+
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="option">
+					 	<%= f.text_field :rate_lteq, placeholder: "Max Rate", class: 'form-control' %>
+					</div>
+				</div>
+				<div class="col-sm-2">
+					<%= f.submit "Filter", id: 'book-btn', class: "btn btn-primary" %>
+					<% end %>
+				</div>
+			</div>
+			<div class="row">
+				<% if @ambassadors.count > 0 %>
+					<% @ambassadors.shuffle.each do |ambassador| %>
+						<% if ambassador.images[0] %>
+							<div class="col-sm-4">
+								<div class="thumbnail text-center">
+									<%= link_to attachment_image_tag(ambassador.profile_photo, :file, :fill, 500, 500, class: 'img-responsive'), ambassador%>
+										<div class="details text-center">
+											<h3 id="name-link">
+												<%= link_to ambassador.first_name.capitalize, ambassador %>
+												<%= link_to ambassador.last_name.capitalize, ambassador %><br>
+											</h3>
+											<div class="basic"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+												</div>
+											<div class="secondary"><strong>Rate:</strong> $<%= number_with_precision(ambassador.rate.to_f, precision: 0) %>/hr</div>
+											<div><%= ambassador.tag_list %></div>
+												<!-- <%= button_to 'Request to Book', line_items_path(ambassador_id: ambassador), class: "btn btn-primary" %> -->
+										</div> <!-- details -->
+									</div> <!-- box -->
+								</div>
+						<% end %>
+					<% end %>
+				<% else %>
+					<h5> No Ambassadors meet your search criteria </h5>
+				<% end %>
+			</div> <!-- row -->
+		</div> <!-- content -->
+	</div> <!-- shortlist-background -->
+</div> <!-- ambassadors -->

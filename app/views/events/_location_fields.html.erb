@@ -1,0 +1,69 @@
+<div class="row event-section">
+	<div class="row">
+		<div class="col-sm-9 title">
+			<h3> Location & Dates </h3>
+		</div> <!-- col -->
+		<div class="col-sm-3">
+			<small>
+				<div class="remove-date">
+					<%= f.check_box :_destroy %>
+					<%= f.label :_destroy, "Delete Location" %>
+				</div> <!-- remove-date -->
+			</small>
+	  </div> <!--  -->
+	</div> <!-- row -->
+<hr>
+	<div class="col-sm-8">
+		<div class="row">
+			<div class="col-sm-3">
+				<%= f.label :location %>
+			</div>
+			<div class="col-sm-9">
+				<%= f.text_field :label, :required => true, placeholder: "ie. Union Station, CN Tower", :maxlength => 1000, class: "form-control" %><br>
+			</div> <!--  -->
+		</div> <!--  -->
+
+		<div class="row">
+			<div class="col-sm-3">
+				<%= f.label :address %>
+			</div> <!-- col-sm-2 -->
+			<div class="col-sm-9">		
+				<%= f.text_field :address, :required => true, placeholder: "Please provide an accurate address", :maxlength => 200, class: "form-control" %><br>
+			</div> <!-- col-sm-6 -->
+		</div> <!-- row -->
+
+		<div class="row">
+			<div class="col-sm-3">
+				<%= f.label :zip, 'Other' %>
+			</div> <!-- col-sm-2 -->
+			<div class="col-sm-3">		
+				<%= f.text_field :zip, :required => true, placeholder: "Postal Code", :maxlength => 200, class: "form-control" %>
+			</div> <!-- col -->
+			<div class="col-sm-3">	
+				<%= f.select :state, ['Ontario'], :required => true, class: "form-control" %>
+			</div> <!-- col -->
+			<div class="col-sm-3">	
+				<%= f.select :country, ['Canada'], :required => true, class: "form-control" %>	
+			</div> <!-- col -->
+		</div> <!-- row -->
+		<br>
+		<div class="row">
+			<div class="col-sm-3">
+				<%= f.label :notes %>
+			</div> <!-- col -->
+			<div class="col-sm-9">		
+				<%= f.text_area :notes, :required => true, placeholder: "ie. Where to park, restrictions...", :maxlength => 200, class: 'form-control' %><br>
+			</div> <!-- col -->
+		</div> <!-- row -->
+	</div>
+
+	<div class="col-sm-4">
+		<!-- Dates -->
+
+	</div>
+</div>
+	<%= f.fields_for :event_dates do |builder| %>
+		<%= render "event_date_fields", :f => builder %>	
+	<% end %>
+	
+

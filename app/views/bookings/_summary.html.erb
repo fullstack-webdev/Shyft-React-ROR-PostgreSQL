@@ -1,0 +1,21 @@
+<h2>Booking Summary</h2>
+<table class="summary-table">
+  <tbody>
+    <tr>
+      <td class="text-left">Staff (<%= unique_staff %>):</td>
+      <td class="text-right"><%= number_to_currency(@booking_sub_total, precision: 2, unit: "$") %></td>
+    </tr>
+    <!-- <tr>
+      <td class="text-left">Tax (<%= number_with_precision(tax_rate.to_f, precision: 0) %>%):</td>
+      <td class="text-right"><%= number_to_currency(@booking_tax_total, precision: 2, unit: "$") %></td>
+    </tr> -->
+    <tr>
+      <td class="text-left">Service fee (<%= number_with_precision(service_fee.to_f, precision: 0) %>%):</td>
+      <td class="text-right"><%= number_to_currency(@booking_service_fee_total, precision: 2, unit: "$") %></td>
+    </tr>
+    <tr>
+      <td class="text-left">Total:</td>
+      <td class="text-right"><%= number_to_currency(@booking_total, precision: 2, unit: "$") %></td>
+    </tr>
+  </tbody>
+</table>

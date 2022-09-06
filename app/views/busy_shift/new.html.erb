@@ -1,0 +1,56 @@
+<h1>BusyShift#new</h1>
+<p>Find me in app/views/busy_shift/new.html.erb</p>
+<%= form_for(@busy_shift) do |f| %>
+  <div class="field">
+    <%= f.label "Day" %><br>
+    <select name="busy_shift[day][]" id="busy_shift_day"><option value="">Please select a day</option>
+      <option value="Sunday">Sunday</option>
+      <option value="Monday">Monday</option>
+      <option value="Tuesday">Tuesday</option>
+      <option value="Wednesday">Wednesday</option>
+      <option value="Thursday">Thursday</option>
+      <option value="Friday">Friday</option>
+      <option value="Saturday">Saturday</option>
+    </select>
+  </div>
+  <div class="field">
+    <%= f.label :start_time %><br>
+    <input type="time" name="busy_shift[start_time][]" id="busy_shift_start_time">
+  </div>
+  <div class="field">
+    <%= f.label :end_time %><br>
+    <input type="time" name="busy_shift[end_time][]" id="busy_shift_end_time">
+  </div>
+  <div class='contentSubmit'>
+    <%= f.submit "Save All Busy Times" %>
+  </div>
+<% end %>
+<br>
+<button class="addItem">Add Another Busy Time</button>
+<script>
+  $('.addItem').click(function(){
+    $('.contentSubmit').before(
+      "<br><br><div class='field'>" +
+        "<label for='busy_shift_Day'>Day</label><br>" +
+        "<select name='busy_shift[day][]' id='busy_shift_day'><option value=''>Please select a day</option>"+
+          "<option value='Sunday'>Sunday</option>" +
+          "<option value='Monday'>Monday</option>" +
+          "<option value='Tuesday'>Tuesday</option>" +
+          "<option value='Wednesday'>Wednesday</option>" +
+          "<option value='Thursday'>Thursday</option>" +
+          "<option value='Friday'>Friday</option>" +
+          "<option value='Saturday'>Saturday</option>" +
+        "</select>" +
+      "</div>" +
+      "<div class='field'>" +
+        "<label for='busy_shift_start_time'>Start time</label><br>" +
+        "<input type='time' name='busy_shift[start_time][]' id='busy_shift_start_time'>" +
+      "</div>" +
+      "<div class='field'>" +
+        "<label for='busy_shift_end_time'>End time</label><br>" +
+        "<input type='time' name='busy_shift[end_time][]' id='busy_shift_end_time'>" +
+      "</div>"
+    );
+  });
+</script>
+

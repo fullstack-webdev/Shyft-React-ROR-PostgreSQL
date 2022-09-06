@@ -1,0 +1,37 @@
+<div class="email-template-wrap">
+
+	<a href="#">
+		<%= image_tag attachments["logo.png"].url, alt: "Shyft", class: "img-logo" %>
+	</a>
+
+	<div class="hero">
+		<h2 >Booking Cancelled</h2>
+		<p >Bummer!</p>
+	</div>
+	
+	<div>
+		<p class="big"><%= @ambassador.full_name %> has cancelled their booking for <%= @event.name %> with <%= @agency.full_name %>.</p>
+	</div>
+
+</div>
+
+
+<div class="footer" >
+
+	<div class="footer-content">
+		
+		<hr>
+
+		<p>Copyright © *|CURRENT_YEAR|* *|LIST:COMPANY|*, All rights reserved.<br>
+		*|IFNOT:ARCHIVE_PAGE|* *|LIST:DESCRIPTION|*</p>
+
+		<p><b>Our mailing address is:</b> <br>
+		*|HTML:LIST_ADDRESS_HTML|* *|END:IF|*</p>
+
+		<p>Want to change how you receive these emails?<br>
+		You can <a href="#" >update your preferences</a> or<a href="#" > unsubscribe from this list</a></p>
+
+		<p>*|IF:REWARDS|* *|HTML:REWARDS|* *|END:IF|*</p>
+	</div>
+
+</div>

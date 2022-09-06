@@ -1,0 +1,20 @@
+<br>
+<% @images.each do |image| %>
+  <div class="col-sm-4 multi-field">
+    <div id="photos">
+      <%= attachment_image_tag(image, :file, :fill, 100, 100) %>
+      <span class="pull-right">
+        <%= link_to image, remote: true, method: :delete do %>
+          <i class="fa fa-times fa-lg remove-field"></i>
+        <% end %>
+      </span>   
+    </div>    
+  </div>
+<% end %>
+
+<script>
+$(".remove-field").click(function(e){
+  e.preventDefault();
+  $(this).closest(".multi-field").remove();
+});
+</script>

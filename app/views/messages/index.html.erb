@@ -1,0 +1,45 @@
+<div class="account-settings row">
+  <div class="content row">
+    <div class="main row"><br />
+    	<div class="title">
+        <h2>Messages</h2>
+      </div>
+      <div class="panel panel-default">
+				<div class="col-md-3 text-center">
+					<!-- can put in the peoples names and images -->
+				</div>
+
+					<div class="panel-heading">
+						<% if current_agency != nil %>
+							Conversation with: <%= @other.full_name %>
+						<% else %>
+							Conversation with: <%= @conversation.sender.company_name %>
+						<% end %>
+					</div>
+					<div class="panel-body">
+						<% unless @event_is_over %>
+						<div class="col-sm-12">
+
+							<%= form_for [@conversation, @conversation.messages.new], remote: true do |f| %> 
+								<div class="form-group">
+									<%= f.text_area :content, placeholder: "Message me", class: "form-control" %>
+								</div>
+
+									<%= f.hidden_field :user_id, value: @other.id %>
+									<%= f.hidden_field :user_type, value: @user_type %>
+								<div class="actions">
+									<%= f.submit "Send Message", class: "btn", id: "ambassador-btn", data: { disable_with: "Sending..." }%>						
+								</div>	
+							<% end %>
+						</div>
+						<% end %>
+						<div id="chat">
+							<%= render @messages, locals: {conversation: @conversation} %>
+						</div>
+					</div>
+				</div>
+
+			<%= subscribe_to conversation_messages_path(@conversation) %>
+    </div> <!-- main -->
+  </div> <!-- content -->
+</div> <!-- agency -->

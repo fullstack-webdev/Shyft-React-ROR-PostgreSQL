@@ -1,0 +1,87 @@
+<% provide(:title, "How to hire ambassadors") %>
+<% provide(:description, "Search for ambassadors for your event. Send booking request to ones that fit your criteria. Let us handle payment. Voila!") %>
+<div class="hiw container-fluid">
+	<div class="row">
+		<div class="how-to-book-background">
+			<div class="layer">
+			  <div class="hiw-layer">
+			    <div class="how-header">
+			      <div class="title">
+			        <h1>Hire Event Staff</h1>
+			      </div> <!-- title -->
+			      <div class="subheader">
+			        <h3>Learn how to get reliable ambassadors for your event</h3>
+			      </div> <!-- subheader -->
+			    </div> <!-- how-header -->
+			  </div> <!-- hiw-layer -->
+			</div>
+		</div> <!-- how-background -->
+	</div> <!-- row -->
+	<div class="content">
+		<div class="col-md-4 sidebar">
+			<%= render 'layouts/public/hiw' %>
+		</div>
+		<div class="col-md-8">
+			<div class="row" id="browse">
+				<div class="panel">
+					<div class="panel-body">
+					<div class="col-md-8">
+						<h3>Search Amabassadors</h3>
+						<p>Search for available ambassadors by date, location, start and end times. Get a list back of available ambassadors with their photos and profile. You can see their <strong>Reliability Rating</strong> from previous events that include:</p> 
+						<ul>
+							<li><strong>Performance</strong>: How well did they perform the job? </li>
+							<li><strong>Timeliness</strong>: Did they show up on time?</li>
+							<li><strong>Booking Rate</strong>: How often do they accept booking requests?</li>
+						</ul>
+						<!-- <small class="learn-more"><a href>Learn More</a></small> -->
+					</div>
+					<div class="col-md-4 text-center hiw-icon">
+						<i class="fa fa-search-plus fa-5x"></i>
+					</div>
+				</div>
+				</div>
+			</div>
+
+			<div class="row" id="detail">
+				<div class="panel">
+					<div class="panel-body">
+						<div class="col-md-8">
+							<h3>Detail Your Event</h3>
+							<p>Get an approved account. Once approved you can create events. Which will include</p> 
+							<ul>
+								<li><strong>The Event</strong>: eg. Sampling promotion for Patron </li>
+								<li><strong>Requirements</strong>: eg. Smart serve and legal age </li>
+								<li><strong>Date (or dates)</strong>: eg. January 17th-19</li>
+								<li><strong>Start &amp; End Times</strong>: eg. 10 AM - 5 PM</li>
+							</ul>
+							<!-- <small class="learn-more"><a href>Learn More</a></small> -->
+						</div>
+						<div class="col-md-4 text-center hiw-icon">
+							<i class="fa fa-pencil-square-o fa-5x"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row" id="book">
+				<div class="panel">
+					<div class="panel-body">
+						<div class="col-md-8">
+							<h3>Book Immediately</h3>
+							<p>Click 'Book' to confirm the ambassador you want. A booking request is sent directly to their phone. This shows them all the details of your event.</p>
+							<p>They'll have 2 hours to reply. You will only be charged if the ambassador accepts your request. If the ambassador declines or does not respond, no charge is made.</p>
+							<!-- <small class="learn-more"><a href>Learn More</a></small> -->
+						</div>
+						<div class="col-md-4 text-center hiw-icon">
+							<i class="fa fa-check-square-o fa-5x"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" id="train"></div>
+			<div class="row" id="event"></div>
+		</div>
+	</div>
+</div>
+
+<%= render 'layouts/public/questions' %>

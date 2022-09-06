@@ -1,0 +1,199 @@
+<% provide(:title, "Shyft: Brand Ambassadors, Promo Models & Event Staff") %>
+<% provide(:description, "Hire reliable ambassadors in Toronto Canada with Shyft.") %>
+<div class="home">
+  <div class="main-background row">
+    <div class="layer">
+      <div class="homepage-header">
+        <div class="title row">
+          <h1>Hire Reliable Ambassadors</h1>
+        </div> <!-- title -->
+<!--         <div class="subheader">
+          <h3>Hire reliable brand ambassadors in Toronto Canada.</h3>
+        </div> <! subheader -->
+        <div class="main-cta row">
+          <div class="row">
+            <%= button_to('How It Works', how_to_work_path, :class => 'btn btn-lg', :id => 'how-btn', :method => :get) %>
+          </div>
+        </div> <!-- main-cta -->
+
+        <div class="searchLayer row">
+          <div class="search-bar row">
+              <div class="col-sm-4 item">
+                <div class="option">
+                  <select class="form-control">
+                    <option>Toronto, ON Canada</option>
+                  </select>
+                </div> <!-- option -->
+              </div> <!-- col-sm-4 -->
+
+            <%= form_tag('/ambassadors_search', method: :get, :class => "form-inline") do %>
+              <div class='col-sm-7 item'>
+                <div class="form-group">
+                  <div class="col-sm-4 sub-item" id="startTimeInput">
+                    <%= text_field_tag(:start_time, params[:start_time], placeholder: "Start Time", class: "time start form-control", required: true  ) %>
+                  </div>
+                  <div class="col-sm-4 sub-item" id="endTimeInput">
+                  <%= text_field_tag(:end_time, params[:end_time], placeholder: "End Time", class: "time end form-control", required: true  ) %>
+                  </div>
+                  <div class="col-sm-4  sub-item">
+                    <div class='input-group date' id='datetimepicker1' />
+                      <%= text_field_tag(:event_date, params[:event_date], placeholder: "Date", class: "form-control", required: true  ) %>
+                      <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+                    </div> <!-- date -->
+
+                    <script type="text/javascript">
+                      var nowDate = new Date();
+                      var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), 0, 0, 0, 0);
+                        $(function () {
+                            $('#datetimepicker1').datetimepicker({
+                              format: "MMM DD, YYYY",
+                              defaultDate: nowDate,
+                              minDate: today
+                            });
+                            $("#datetimepicker1").on("dp.change", function (e) {
+
+                            });
+
+                           // initialize input widgets first
+                           $('#startTimeInput .time').timepicker({
+                               'showDuration': true,
+                               'timeFormat': 'h:i A',
+                               'scrollDefault': 'now'
+                           });
+
+                            // initialize input widgets first
+                           $('#endTimeInput .time').timepicker({
+                               'showDuration': true,
+                               'timeFormat': 'h:i A',
+                               'scrollDefault': 'now'
+                           });
+
+                          $('#startTimeInput .time').on("selectTime", function (e) {
+                            // remove current end time and update with new values
+                            $('#endTimeInput .time').timepicker('remove');
+                              var starttime = $('#startTimeInput .time').val()
+                              var startdate = $('#startTimeInput .time').timepicker('getTime')
+                              var end_time_minimum = String(startdate.getHours() + 1) + ":" + String(startdate.getMinutes())
+                               $('#endTimeInput .time').timepicker({
+                                  'showDuration': true,
+                                  'timeFormat': 'h:i A',
+                                  'scrollDefault': 'now',
+                                  'disableTimeRanges': [["12:00 am", end_time_minimum]],
+                                  'minTime': starttime
+                              })
+                          });
+                      });
+
+                    </script>
+                  </div>
+                </div> <!-- form-group -->
+              </div> <!-- col -->
+              <div class="col-sm-1 item">
+                <div class="option">
+                  <%= submit_tag "Find", :class => 'btn btn-md', id: 'btn-search' %>
+                </div> <!-- option -->
+              </div> <!-- col-sm-3 -->
+          </div> <!-- search-bar -->
+        </div> <!-- searchLayer -->
+        <% end %>
+      </div> <!-- homepage-header -->
+    </div> <!-- layer -->
+  </div> <!-- main-backround -->
+
+  <div class="why-shyft text-center row">
+    <div class="why-container">
+      <div class="why-heading">
+        <h1>Why Shyft</h1>
+      </div>
+      <div class="col-sm-4 reason-box">
+        <div class="why-icon">
+          <!-- <i class="fa fa-search-plus fa-5x"></i> -->
+          <%= image_tag "shyft-search-circle.png", class: 'img-responsive' %>
+        </div> <!-- icon -->
+        <div class="why-title">
+          <h3>The Most Powerful Ambassador Search</h3>
+        </div> <!-- title -->
+        <div class="why-details">
+          <p>Filter by availability, repeat hires, response time, ratings, proximity to event location and more...</p>
+        </div> <!-- details -->
+      </div> <!-- col -->
+      <div class="col-sm-4 reason-box">
+        <div class="why-icon">
+          <!-- <i class="fa fa-shield fa-5x"></i> -->
+          <%= image_tag "shyft-reliable-circle.png", class: 'img-responsive text-center' %>
+        </div> <!-- icon -->
+        <div class="why-title">
+          <h3>Proven & Reliable<br> Staff</h3>
+          </div> <!-- title -->
+        <div class="why-details">
+          <p>Get to know great ambassadors through timeliness tracking, performance reviews and ratings.</p>
+        </div> <!-- details -->
+      </div> <!-- col -->
+      <div class="col-sm-4 reason-box">
+        <div class="why-icon">
+          <%= image_tag "shyft-instabook-circle.png", class: 'img-responsive' %>
+          <!-- <i class="fa fa-bolt fa-5x"></i> -->
+        </div> <!-- icon -->
+        <div class="why-title">
+          <h3>Fast, Easy <br> Bookings</h3>
+        </div> <!-- title -->
+        <div class="why-details">
+          <p>From a single interface you can schedule, screen and book ambassadors for your event shifts.</p>
+        </div> <!-- details -->
+      </div> <!-- col -->
+    </div> <!--  -->
+  </div> <!-- why-shyft -->
+
+  <div class="home-signups text-center row">
+    <div class="signup-container">
+      <div class="col-sm-6 agency-call">
+        <div class="split">
+          <div class="title">
+            <h1>I'm looking for staff.</h1>
+          </div> <!--  -->
+          <div class="call-to-action">
+            <div class="col-sm-6 learn">
+              <p>
+                <%= link_to '> Learn More', how_to_hire_path %>
+              </p>
+            </div>
+            <div class="col-sm-6 action">
+              <% if @agency_logged_in %>
+                <%= link_to new_event_session_path, method: :get do %>
+                  <i class="fa fa-calendar"></i> Create Event
+                <% end %>
+              <% else %>
+                <%= link_to new_agency_registration_path do %>
+                  <i class="fa fa-calendar"></i> Create Event
+                <% end %>
+              <% end %>
+
+
+            </div> <!-- col -->
+          </div> <!-- call -->
+        </div> <!-- split -->
+      </div> <!-- col -->
+      <div class="col-sm-6 ambassador-call">
+        <div class="split">
+          <div class="title">
+            <h1>I want to work!</h1>
+          </div> <!--  -->
+          <div class="call-to-action">
+            <div class="col-sm-6 learn">
+              <p>
+                <%= link_to '> Learn More', how_to_work_path %>
+              </p>
+            </div> <!-- col -->
+            <div class="col-sm-6 action">
+              <%= link_to ambassadors_signup_path do %>
+                <i class="fa fa-user"></i> Get Profile
+              <% end %>
+            </div> <!-- col -->
+          </div> <!-- call -->
+        </div> <!-- split -->
+      </div> <!-- col -->
+    </div> <!-- signup-container -->
+  </div> <!-- home-signups -->
+</div>

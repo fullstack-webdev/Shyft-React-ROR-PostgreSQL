@@ -1,0 +1,36 @@
+// Place all the styles related to the Bookings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.yellow-border {
+	border:  2px solid #f6931f !important;
+	padding: 15px 25px 15px 25px !important;
+	border-radius: 5px;
+	.send-booking-request{
+		.booking-request{
+			display: block;
+			width: 100%;
+		    background-color: #f6931f;
+		    color: #fff;
+		    border: none;
+		    padding: 10px 20px 10px 20px;
+		    border-radius: 2px;
+		    margin-bottom: 5px;
+		    font-size: 16px;
+		    margin-top: -4px;
+		    font-family: "Roboto", Helvetica, Arial, sans-serif;
+		    text-transform: uppercase;
+		}
+		p.description {
+			font-size: 10px;
+		}	
+	}
+	.booking-summary {
+		text-align: center;
+		font-size: 14px;
+	}
+
+	table.summary-table {
+		width: 100%;
+	}	
+	
+}

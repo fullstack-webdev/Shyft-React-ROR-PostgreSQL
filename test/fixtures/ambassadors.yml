@@ -1,0 +1,18 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# empty
+
+lebowski:
+ first_name: Jeffery
+ last_name: Lebowski
+ email: thedude@lebowski.com
+ password_digest: <%= Ambassador.digest('therugdude') %>
+ activated: true
+ activated_at: <%= Time.zone.now %>
+
+ christmas:
+  first_name: Lloyd
+  last_name: Christmas
+  email: christmas@theshagonwagon.com
+  password_digest: <%= Ambassador.digest('chicksdigit') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>

@@ -1,0 +1,11 @@
+<tr>
+	<td class="col-sm-1 text-center">
+		<%= line_item.quantity %>
+	</td>
+	<td class="col-sm-9">
+		<%= line_item.ambassador.first_name %> <%= line_item.ambassador.last_name %>
+	</td>
+	<td class="item_price col-sm-1">
+		<%= number_to_currency(line_item.total_price) %>
+	</td>
+</tr>

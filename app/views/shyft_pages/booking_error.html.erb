@@ -1,0 +1,25 @@
+<% provide(:title, 'Booking Error') %>
+
+<div class="container-fluid login"> 
+  <div class="background">
+    <div class="row">    
+      <div class="check-email">
+<% params[:flash].each do |name, msg| %>
+      <%= content_tag(:div, msg, class: "alert alert-info") %>
+    <% end %>                
+        <div class="text-center hiw-icon">
+          <i class="fa fa-exclamation fa-5x"></i>
+        </div>
+        <div class="title">
+          <% provide(:title, 'Shyft') %>
+          <h3>PAYMENT ERROR!</h4>
+        </div>
+
+        <div class="instructions">
+          <p>Sorry, there was a problem processing your payment.</p>
+          <p>Please check the payment information you provided and try again.</p>
+          <p>If you continue to experience problems making booking requests contact bookings@shyftworks.com.</p>	
+        </div>
+      </div> <!-- check-email -->
+    </div> <!-- row -->
+  </div> <!-- background -->

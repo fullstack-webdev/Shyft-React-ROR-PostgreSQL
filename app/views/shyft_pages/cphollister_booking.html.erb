@@ -1,0 +1,198 @@
+<% provide(:title, 'Booking') %>
+
+<div class="booking">
+	<div class="background">
+		<div class="content row">
+			<div class="col-sm-8 primary">
+				<div class="payment row">
+					<div class="title row">
+						<div class="col-sm-12">
+							<h2>Payment</h2>
+						</div>
+					</div>
+					<div class="name row">
+						<div class="col-sm-5">
+							<input type="text" class="form-control" placeholder="Name on card" size="40x1">
+						</div>
+					</div>
+					<div class="card-number row">
+						<div class="col-sm-5">
+							<input type="text" class="form-control" placeholder="16 digit card number" size="20x1">
+						</div>
+						<div class="col-sm-5">	
+				        <select class="form-control">
+									<option>Visa</option>
+									<option>MasterCard</option>
+									<option>American Express</option>
+								</select>
+							</div>
+					</div>
+					<div class="authentication row">
+							<div class="col-sm-5">
+				        <select class="form-control left">
+									<option>January - 01</option>
+									<option>February - 02</option>
+									<option>March - 03</option>
+								</select>
+							</div>
+							<div class="col-sm-3">	
+				        <select class="form-control">
+									<option>2015</option>
+									<option>2016</option>
+									<option>2017</option>
+								</select>
+							</div>
+							<div class="col-sm-2">
+								<input type="text" class="form-control" placeholder="CVC" size="6x1">
+							</div>
+					</div>
+				</div> <!-- payment -->
+				<hr>
+				<div class="billing row">
+					<div class="title row">
+						<div class="col-sm-12">
+							<h2>Billing Details</h2>
+						</div>
+					</div>
+					<div class="company row">
+						<div class="col-sm-8">
+							<input type="text" class="form-control" placeholder="Company name" size="40x1">
+						</div>
+					</div>
+					<div class="address_1 row">
+						<div class="col-sm-8">
+							<input type="text" class="form-control" placeholder="Address 1" size="40x1">
+						</div>
+					</div>
+					<div class="address_2 row">
+						<div class="col-sm-8">
+							<input type="text" class="form-control" placeholder="Address 2" size="40x1">
+						</div>
+					</div>
+					<div class="authentication row">
+						<div class="col-sm-5">
+							<input type="text" class="form-control" placeholder="City" size="40x1">
+						</div>
+						<div class="col-sm-3">
+			        <select class="form-control">
+								<option>ON</option>
+								<option>AB</option>
+								<option>QC</option>
+							</select>
+						</div>
+						<div class="col-sm-3">	
+			        <select class="form-control">
+								<option>Canada</option>
+								<option>United States</option>
+								<option>United Kingdom</option>
+							</select>
+						</div>
+					</div>
+				</div> <!-- Billing -->	
+				<hr>
+				<div class="terms row">
+					<div class="col-sm-12">
+						<p>By clicking on "Request to Book", you agree to pay the total amount shown, which includes Service Fees, on the right and to the <a href="#">Terms of Service</a>, <a href="#">Event Rules</a>, C<a href="#">ancellation Policy</a> and <a href="#">Agency Refund Policy</a>.</p>
+					</div>
+				</div>				
+				<div class="book-button row">
+					<div class="col-sm-12">
+						<%= link_to(confirmation_path, class: 'btn btn-lg', id: 'book-btn') do %>
+						 	<i class="fa fa-bolt"></i> Request to Book
+						<% end %>
+					</div>
+				</div> <!-- book-button -->
+				<div class="response row">
+					<div class="col-sm-12">
+						<p>They'll have 24 hours to reply. You will only be charged if the ambassador accepts your request. If the ambassador declines or does not respond, no charge is made.</p>
+					</div>
+				</div>
+			</div> <!-- col-sm-8 -->
+
+			<div class="col-sm-4 secondary">
+				<div class="invoice row">
+					<%= link_to image_tag("cphollister/8.jpg", alt: "CPHollister 1", class: "img-responsive"), cphollister_profile_path %>
+					<div class="box">
+						<div class="profile row">
+							<div class="col-sm-12">
+								<h4>Chris Hollister</h4>
+								<select class="form-control">
+									<option>Molson Sampling</option>
+									<option>RBC Handout</option>
+									<option>Canadian Tire</option>
+									<option>Nestle Chocolate</option>
+								</select>
+							</div> <!-- col-sm-6 -->
+						</div> <!-- profile -->
+						<hr>
+						<div class="dates">
+							<div class="row">
+								<div class="col-sm-12">
+									<span><p><b>Start: </b>Sat, Dec 20, 2014 9:00am<p></span>
+									<span><p><b>End: </b>Sat, Dec 20, 2014 5:00pm</p></span>
+								</div>
+							</div> <!-- col-sm-5 -->
+						</div>
+						<hr>
+						<div class="agree">
+							<div class="policy row">
+								<div class="type col-sm-7">
+									<p>Cancellation Policy</p>
+								</div> <!-- col-sm-7 -->
+								<div class="details col-sm-5">
+									<p><a href="#">12 hour</a></p>
+								</div> <!-- col-sm-5 -->
+							</div> <!-- policy -->
+							<div class="policy row">
+								<div class="type col-sm-7">
+									<p>Event Policy</p>
+								</div> <!-- col-sm-7 -->
+								<div class="details col-sm-5">
+									<p><a href="#">Review</a></p>
+								</div> <!-- col-sm-5 -->
+							</div> <!-- policy -->
+						</div> <!-- agree -->
+						<hr>
+						<div class="summary">
+							<div class="line-item row">
+								<div class="details col-sm-7">
+									<p>$<span>18 <sup>CAD</sup> x 8 hours</span></p>
+								</div> <!-- col-sm-6 -->
+								<div class="sub-total col-sm-5">
+									<p>$<span>144 <sup>CAD</sup></p>
+								</div> <!-- col-sm-6 -->
+							</div> <!-- line-item -->
+							<div class="line-item row">
+								<div class="details col-sm-7">
+									<p>Service Fee <i class="fa fa-question-circle"></i></p>
+								</div> <!-- col-sm-6 -->
+								<div class="sub-total col-sm-5">
+									<p>$<span>17 <sup>CAD</sup></p>
+								</div> <!-- col-sm-6 -->
+							</div> <!-- line-item -->
+						</div> <!-- total -->
+						<hr>
+						<div class="total row">
+							<div class="details col-sm-7">
+								<p>Total</p>
+							</div> <!-- col-sm-6 -->
+							<div class="sub-total col-sm-5">
+								<p>$<span>161 <sup>CAD</sup></p>
+							</div> <!-- col-sm-6 -->
+						</div> <!-- line-item -->
+					</div> <!-- box -->
+				</div> <!-- invoice -->
+			</div> <!-- col-sm-4 -->
+		</div> <!-- content -->
+	</div> <!-- background -->
+</div> <!-- booking -->
+
+
+<% if notice %>
+<p id="notice"><%= notice %></p> <% end %>
+<h2>Your Pragmatic Cart</h2> 
+<ul>
+	<% @cart.line_items.each do |item| %> 
+		<li><%= item.ambassador.first_name %></li>
+	<% end %> 
+</ul>

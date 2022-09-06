@@ -1,0 +1,28 @@
+<li id="review-<%= review.id %>">
+	<div class="complete row">
+		<div class="col-xs-3 text-center">
+			<div class="image">
+				<div class="overall-rating row">
+					<strong class="rating-label"></strong>
+					<% 5.times do |n| %>
+						<i class="fa fa-star fa-1x"></i>
+					<% end %>
+		   </div> <!-- overall-rating -->
+
+	    	<!--<%= image_tag "cphollister-reviews/rosalie.jpg", alt: "Review 1", class: "img-circle" %>-->
+	    </div> <!-- image -->
+	    <br>
+	     <%= review.created_at.strftime("%b. %d, %Y") %>
+	  </div> <!-- col-xs-2 -->
+
+		<div class="col-xs-9">
+			<div class="write-up">
+	    	<blockquote>
+				  <%= simple_format review.content %>
+				  <footer><%= review.name %> <!--@ <cite title="Source Title">Summerhill Group</cite>--></footer>
+				</blockquote>
+	    </div> <!-- write-up -->
+	  </div> <!-- col-xs-9 -->
+	</div> <!-- complee -->
+
+</li>

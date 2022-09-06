@@ -1,0 +1,62 @@
+<div class="container-fluid login">
+  <div class="background row">
+    <div class="login-box">
+    <% flash.each do |name, msg| %>
+       <%= content_tag(:div, msg, class: "alert alert-info") %>
+     <% end %>
+
+      <div class="title">
+        <% provide(:title, 'Sign up') %>
+        <h4><em>STEP 1:</em> Sign up</h4>
+      </div> <!-- title -->
+
+      <%= form_for(@ambassador) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <div class="form-inputs">
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+            <%= f.text_field :first_name, class: "form-control", placeholder: 'First name', autofocus: true, required: true %>
+          </div> <!-- input-group -->
+        </div> <!-- form-group -->
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+            <%= f.text_field :last_name, class: "form-control", placeholder: 'Last name', autofocus: true, required: true %>
+          </div> <!-- input-group -->
+        </div> <!-- form-group -->
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+            <%= f.email_field :email, class: "form-control", placeholder: 'Email', autofocus: true, required: true %>
+          </div> <!-- input-group -->
+        </div> <!-- form-group -->
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+            <%= f.telephone_field :phone_number, class: "form-control", placeholder: 'Phone', autofocus: true, required: true %>
+          </div> <!-- input-group -->
+        </div> <!-- form-group -->
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+            <%= f.password_field :password, class: "form-control", placeholder: 'Password', autofocus: true, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
+          </div> <!-- input-group -->
+        </div> <!-- form-group -->
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+            <%= f.password_field :password_confirmation, class: "form-control",placeholder: 'Confirm password', autofocus: true, required: true %>
+          </div> <!-- input-group -->
+        </div> <!-- form-group -->
+      </div> <!-- form-inputs -->
+
+      <div class="form-actions">
+        <%= f.submit "SIGN UP", class: "btn btn-primary", id: "book-btn", data: { disable_with: "Signing up..." }%>
+      </div> <!-- form-actions -->
+      <br>
+      <p>Already have an account? <%= link_to "Login!", login_path %></p>
+    <% end %>
+  </div> <!-- background -->
+</div> <!-- login -->

@@ -1,0 +1,43 @@
+<div class="container-fluid login">
+  <div class="background row">
+    <div class="login-box">
+    <% flash.each do |name, msg| %>
+       <%= content_tag(:div, msg, class: "alert alert-info") %>
+    <% end %>
+    <div class="title">
+      <% provide(:title, 'Agency Login') %>
+      <h4>Welcome back!</h4>
+    </div> <!-- title -->    
+    <%= simple_form_for(resource, as: resource_name, url: '/agency/sign_in', method: 'POST') do |f| %>
+      <div class="form-inputs">
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+            <%= f.email_field :email, class: "form-control", placeholder: 'Email', autofocus: true, required: true %>
+          </div> <!-- input-group -->
+        </div> <!-- form-group -->
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+              <%= f.password_field :password, class: "form-control", placeholder: 'Password', autofocus: true, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
+            </div> <!-- input-group-addon -->         
+          </div> <!-- input-group -->
+        </div> <!-- form-group -->
+      <div class="form-group">
+        <div class="input-group">
+          <%= f.label :remember_me, class: "checkbox inline" do %>
+            <%= f.check_box :remember_me %>
+            <span>Remember me on this device</span>
+          <% end %>
+        </div> <!-- input-group -->
+      </div> <!-- form-group -->
+      <div class="form-actions">
+        <%= f.submit "Login as an Agency", class: "btn btn-lg", id: "book-btn" %>
+      </div> <!-- form-actions -->
+    <% end %>
+    <p>New user? <%= link_to "Sign up now!", new_agency_registration_path %></p>
+    <%= link_to "Forgot Password?", new_agency_password_path %> 
+    <div class="legal text-center">
+    </div> <!-- legal -->
+  </div> <!-- background -->
+</div> <!-- login -->

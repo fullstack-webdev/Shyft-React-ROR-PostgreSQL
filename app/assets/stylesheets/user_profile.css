@@ -1,0 +1,77 @@
+.user-profile-categories {
+  list-style: none;
+  display: flex;
+  padding-right: 40px;
+}
+
+.user-profile-index-outer-container {
+  top: 67px;
+  height: 200px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-item-and-detail {
+  height: 80%;
+  display: flex;
+  margin-left: 40px;
+  margin-right: 40px;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
+  border-top:1px solid gray;
+}
+.profile-item-and-detail .tabContent {
+    margin-top:10px;
+    max-height:510px;
+    overflow:scroll;
+    text-align:left;
+}
+.tabContent .about {
+    padding: 15px;
+}
+
+.active {
+  font-weight: bold;
+  font-size: 17px;
+  background-color: #f5f5f5;
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
+  padding: 5px;
+  color: black;
+}
+
+.active-background {
+  background-color: #f5f5f5;
+}
+
+.inactive-tab {
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
+  padding: 5px;
+  font-size: 17px;
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
+  padding: 5px;
+  font-size: 17px;
+  color: black;
+  width: 25%;
+  border: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.user-profile-categories .active {
+  width: 25%;
+  border: 1px solid gray;
+  border-bottom: none;
+}
+
+.inactive-tab:hover {
+  cursor: pointer;
+}
+
+.user-profile-outer-container {
+  margin-bottom: -11px;
+  z-index:100;
+}

@@ -1,0 +1,33 @@
+.datePickerContainer{
+  max-width: 300px;
+  min-width: 280px;
+  text-align: center;
+  margin: 0 auto; 
+  .remove {
+    display:inline-block;
+  }
+}
+.event-container {
+  text-align: right;
+}
+.location-container {
+  padding-top: 15px;
+}
+.date-button {
+  display: inline-block;
+  width: 120px;
+  height: 80px;
+  padding: 10px;
+  .span {
+    background-color: #0e90d2;
+    font-size: 20px;
+  }
+  a{
+    text-decoration: none !important;
+    p{
+      font-size: 16px;
+      color: #0e90d2;
+      display:block;
+    }
+  }
+}

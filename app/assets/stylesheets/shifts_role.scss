@@ -1,0 +1,115 @@
+// Place all the styles related to the shifts_role controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.add-role{
+  clear: both;
+}
+ul.dropdown-menu.inner.selectpicker {
+  top: 0;
+}
+.form-group {
+  margin-bototm: 0 !important;
+}
+
+#rolePopup {
+  min-width: 320px;
+  background-color:#4cc9f0;
+  z-index:9999999999 !important;
+  padding:10px;
+  border-radius: 5px;
+  &.form-group{
+    margin-bottom: 0px !important;
+  }
+
+  .select {
+    padding: 0 !important;
+  }
+  .rate {
+    padding: 0;
+    span {
+      padding-top: 5px;
+      float:left;
+    }
+    input {
+      display: inline-block;
+      max-width: 60px;
+      min-height: 36px;
+    }
+  }
+}
+input.invalid-number {
+    border-color: #ff0000 !important;
+    border-width: 2px !important;
+    display: block;
+    border-style: solid;
+}
+.shifts {
+  .col-sm-1{
+    width: 32px;
+    height: 32px;
+    padding: 0px;
+  }
+}
+.circle {
+  display:inline-block;
+  .bookable {
+    background-color: #91ee82;
+    box-shadow: 0px 0px 10px 3px #91ee82;
+  }
+  .booked{
+    background-color: #ff0000;
+    box-shadow: 0px 0px 10px 3px #ff0000;
+  }
+  &.selected {
+    border-color: #53c9ee;
+    border-width: 1px;
+    box-shadow: 0px 0px 10px 3px #53c9ee;
+  }
+  &.pending {
+    border-color: #f6931f;
+    border-width: 1px;
+    box-shadow: 0px 0px 10px 3px #f6931f;
+  }
+
+  &.accepted {
+    border-color: #91EE8E;
+    border-width: 1px;
+    box-shadow: 0px 0px 10px 3px #91EE8E;
+  }
+
+  .role-abbr{
+    padding: 8px 6px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+}
+
+
+.remove {
+  a.btn {
+    padding: 0;
+  }
+}
+
+.container.notification {
+  color: #00b3ee;
+  .btn {
+    color:#f6931f;
+  }
+}
+
+a.delete-role{
+  color: #ee0000;
+  text-decoration: none;
+  font-weight:bold;
+  &:hover{
+    text-decoration: none;
+    cursor:pointer;
+  }
+}
+
+//SHIF FORM MODAL
+.error {
+  color: #ff0000;
+}

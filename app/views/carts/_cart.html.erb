@@ -1,0 +1,19 @@
+<table class='table table-striped'>
+	<tr>
+  	<th class="col-sm-5">Name</th>
+  	<th class="col-sm-2 text-center">Rate</th>
+  	<th class="col-sm-2 text-center">Hours</th>
+  	<th class="col-sm-2 text-center">Amount</th>
+  </tr>
+  <% @cart.line_items.each do |line_item| %>
+	<tr>
+		<td class="col-sm-5"><%= line_item.ambassador.first_name %> <%= line_item.ambassador.last_name %></td>
+		<td class="col-sm-2 text-center"><%= line_item.ambassador.rate %></td>
+		<td class="col-sm-2 text-center">
+			<%= line_item.quantity %>
+		</td>
+		<td class="col-sm-2 text-center"><%= number_to_currency(line_item.total_price) %></td>
+	</tr>
+	<% end %>
+
+</table>

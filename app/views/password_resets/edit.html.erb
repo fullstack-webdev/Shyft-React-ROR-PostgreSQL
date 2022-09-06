@@ -1,0 +1,38 @@
+<div class="container-fluid login">
+  <div class="row text-center">
+    <div class="devise-header">
+      <div class="text-center">
+      </div>
+    </div>
+  </div>
+
+  <div class="background row">
+    <div class="login-box">
+    <% flash.each do |name, msg| %>
+       <%= content_tag(:div, msg, class: "alert alert-info") %>
+     <% end %>
+
+      <div class="title">
+        <% provide(:title, 'Forgot password') %>
+        <h4>Forgot Password</h4>
+      </div>
+
+    <%= form_for(@ambassador, url: password_reset_path(@ambassador.id)) do |f| %>
+      <div class="form-inputs">
+        <div class="form-group">
+          <%= hidden_field_tag :email, @ambassador.email %>
+
+          <%= f.label :password %>
+          <%= f.password_field :password, class: 'form-control' %>
+
+          <%= f.label :password_confirmation, "Confirmation" %>
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+          </div>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

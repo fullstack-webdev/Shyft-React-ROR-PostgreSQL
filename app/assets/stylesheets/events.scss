@@ -1,0 +1,114 @@
+// Place all the styles related to the events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.rows {
+  /* display: flex; */
+  text-align:center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+.chevron {
+  opacity: 0.4;
+}
+.chevron:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.eventDatesContainer {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  min-height: 250px;
+}
+
+.eventDatesInnerContainer {
+  display: flex;
+  overflow: auto;
+}
+
+.eventItem {
+  min-width: 240px;
+}
+
+.shift-plus {
+  position: relative;
+}
+
+.shift-plus:focus {
+  outline: 0;
+}
+#role-button:focus {
+  outline: 0;
+}
+.circle {
+  width: 25px;
+  height: 25px;
+  border: 1px solid silver;
+  border-radius: 50px;
+  margin: 1px;
+}
+
+.box {
+  width: 20px;
+  height: 20px;
+  background-color: maroon;
+  margin-right: 4px;
+}
+
+.circle:hover {
+  background-color: silver;
+  cursor: pointer;
+}
+
+.dropdown {
+  display: flex
+}
+
+.arrow:hover {
+  cursor: pointer;
+  color: green;
+}
+
+.cancelAddDateButton {
+  height: 42px;
+  padding-bottom: 2px;
+
+}
+
+#book-btn:focus {
+  outline: 0;
+}
+
+#date-picker-trigger {
+  text-align: center;
+}
+
+.datepicker__tether-element {
+  left: 50% !important;
+  transform: translateX(-50%) translateY(273px) translateZ(0px) !important;
+}
+
+.booking-summary{
+  
+}
+
+.row.event-detail {
+  margin-bottom: 20px;
+  h3 {
+    font-size: 16px;
+  }
+  p {
+    padding-left:10px;
+  }
+
+}

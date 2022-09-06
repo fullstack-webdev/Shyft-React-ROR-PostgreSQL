@@ -1,0 +1,103 @@
+<div class="account-settings row">
+  <div class="content row">
+    <div class="main row"><br />
+      <div class="title">
+        <h2><%= @event.name %></h2>
+      </div>
+
+			<div class="panel panel-default">	
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-sm-2">
+							<h4>Details:</h4>
+						</div>
+						<div class="col-sm-10">
+							<p><%= @event.event_details %></p>
+						</div>
+					</div>
+					<% for event_location in @event.event_locations %>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="col-sm-4">
+									<h4>Locations:</h4>
+								</div>
+								<div class="col-sm-8">
+									<h4><%= event_location.label %></h4>
+									<p><b>Address:</b> <%= event_location.address %>, <%= event_location.state %>, <%= event_location.zip %> <%= event_location.country %></p>
+									<p><b>Notes:</b> <%= event_location.notes %></p>
+								</div> <!-- col -->
+							</div> <!-- col -->
+							<div class="col-sm-6">
+								<% for event_date in event_location.event_dates %>
+									<div class="col-sm-4">
+										<h4>Dates:</h4>
+									</div> <!-- col -->
+									<div class="col-sm-8">
+										<% if event_date.event_date.present? %>
+											<h4><%= event_date.event_date.strftime("%A, %B, %e") %></h4>
+										<% end %>
+										<% if event_date.start_time.present? && event_date.end_time.present? %>
+											<p><%= event_date.start_time.strftime("%k%P") %> to <%= event_date.end_time.strftime("%k%P") %></p>
+										<% end %>
+									</div>
+							</div> <!-- col -->
+						</div> <!-- row -->
+						<% for event_role in event_date.event_roles %>
+							<div class="row">
+								<div class="col-sm-2">
+									<h4>Roles</h4>
+								</div>
+								<div class="col-sm-10">
+									<div class="col-sm-2">
+										<p><%= event_role.role.capitalize %></p>
+									</div>
+									<div class="col-sm-5">
+										<b>Rate: $</b><%= event_role.hourly_rate %>/hr</p>
+									</div>
+									<div class="col-sm-5">
+										<b>Quantity: </b><%= event_role.quantity %></p>
+									</div>
+								</div>
+							</div>
+							<% end %>
+							<% end %>
+						</div>
+						<% end %>
+
+						<br><%= link_to 'Edit', edit_event_path(@event) %>
+						<br><%= link_to 'View All', events_path(params[:agency_id]) %>
+					</div>	
+				</div>	
+				<div class="row">
+					<h3>Requests sent</h3>
+					<hr>
+				</div>
+				<div class="row">
+					<h3>Matched Ambassadors</h3>
+					<hr>
+					<% @ambassadors.order(:created_at).each do |ambassador| %>
+						<% if ambassador.images[0] && ambassador.activated == true %>
+						<div class="col-sm-4">
+							<div class="thumbnail text-center">
+								<%= link_to attachment_image_tag(ambassador.profile_photo, :file, :fill, 500, 500, class: 'img-responsive'), ambassador%>	
+									<div class="details text-center">
+										<h3 id="name-link">
+											<%= link_to ambassador.first_name.capitalize, ambassador %>
+											<%= link_to ambassador.last_name.capitalize, ambassador %>
+										</h3>
+										<div class="basic"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+											</div>
+										<div class="secondary"><strong>Rate:</strong> $<%= number_with_precision(ambassador.rate.to_f, precision: 0) %></div> 
+											<%= button_to 'Request to Book', line_items_path(ambassador_id: ambassador), class: "btn btn-primary" %>
+									</div> <!-- details -->
+								</div> <!-- box -->
+							</div>
+						<% end %>
+					<% end %>
+				</div> <!-- panel-body -->
+			</div> <!-- panel -->
+
+
+    </div> <!-- main -->
+  </div> <!-- content -->
+</div> <!-- agency -->

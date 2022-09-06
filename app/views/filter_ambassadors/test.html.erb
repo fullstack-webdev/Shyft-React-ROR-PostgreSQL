@@ -1,0 +1,19 @@
+<button class='tryTest'>Try Filter</button>
+
+<script>
+  $('.tryTest').click(function(){
+    console.log("hi daniel")
+    params = {};
+    params.role_id = 5;
+
+    $.ajax({
+      method: "GET",
+      url: "/filterAmbassadors",
+      data: params,    
+    })
+      .done(function(res){
+        console.log("INC response")
+        console.log(res)
+      });
+  });
+</script>

@@ -1,0 +1,40 @@
+
+<!-- Modal -->
+<%
+  event_roles = EventRole.where('event_id = ? and ambassador_id = ?',event.id, current_user.id) 
+%>
+<div id="eventDetail<%= event.id%>" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+  <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" align="center"><%= event.name %></h4>
+      </div> <!-- modal-header -->
+      <div class="modal-body">
+          <div class="event-details">
+              <div class="col-md-2 col-sm-4">
+                <p>Details</p>  
+              </div>
+              <div class="col-md-10 col-sm-8">
+                <p><%= event.event_details %></p>
+              </div>
+          </div>
+          <div class="event-shifts">
+            <%
+              event_roles.each  do |event_role|
+                event_date_shift = event_role.event_date_shift
+                  %>
+                  <div class="row event-detail">
+                    <h4 class="modal-title"><%= event_role.event_date.event_date.strftime("%A,  %B %d, %Y") %></h4>
+                    <p><%= event_date_shift.start_time.strftime("%l:%M %P") %> - <%= event_date_shift.end_time.strftime("%l:%M %P") %> </p>
+                    <p><%= event_role.event_date.event_location.display_address %></p>
+                  </div>
+                  <%
+              end
+            %>
+          </div>
+      </div> <!-- modal-body -->
+    </div> <!-- modal-content -->
+  </div> <!-- modal-dialog -->
+</div> <!-- End of Modal-->

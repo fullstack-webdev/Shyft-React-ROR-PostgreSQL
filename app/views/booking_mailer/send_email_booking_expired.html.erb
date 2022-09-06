@@ -1,0 +1,87 @@
+<div class="email-template-wrap">
+
+	<a href="#">
+		<%= image_tag attachments["logo.png"].url, alt: "Shyft", class: "img-logo" %>
+	</a>
+
+	<div class="hero">
+		<h2 >Booking Expired</h2>
+		<p >Awwww Rats!</p>
+	</div>
+	
+	<div>
+		<p class="big">Wanted to let you know, the booking request from <%= @agency.company_name %> expired and has been sent to another lucky Ambassador. Keep an eye out for future booking requests. Agencies try to staff their events as quickly as possible, so if you see an email hit accept right away!</p>
+	</div>
+
+	<hr class="hr-up">
+
+	<h3 class="second-title">Missed Shifts</h3>
+
+	<p class="event-title">Event Name: <%= @event.name %></p>
+
+	<div class="events">
+		<p>
+			Event Details <br>
+			<%= @event.event_details %>
+		</p>
+		<% @schedules.each do |schedule| %>
+			<p>
+				<%= schedule[:date] %><br>
+				<%= schedule[:startTime] %> - <%= schedule[:endTime] %><br>
+				<%= schedule[:location] %>
+			</p>
+		<% end %>
+
+	</div>
+	
+	<hr class="limit">
+
+	<div class="faqs">
+		<h3 >FAQ's</h3>
+
+		<p class="title"><b>Why do I only have two hours to accept the shifts?</b></p>
+		<p class="content">In this day and age, everything moves quickly. That being said agencies would like to know if you can accept the shifts asap. These shifts are only being offered to you and you have the full two hours to respond however the faster you respond the better your rating will be.</p>
+		<p class="title"><b>If I don't respond to a booking request, what happens?</b></p>
+		<p  class="content">Some events are not a good fit for everyone, however, please decline the shift you don't want vs waiting the two hours for the shifts to be offered to someone else. You can always go to www.shyftworks.com/login and update your availability.</p>
+		<p class="title" ><b>If you have any questions please feel free to respond to this email.</b></p>
+	</div>
+
+		
+		<hr class="normal">
+
+		<% if !@avatar_image.present? %>
+			<%= image_tag attachments['avatar.png'].url, alt: 'Shyft', class: 'avatar' %>
+		<% else %>
+			<%= image_tag @avatar_image_url, alt: 'Shyft', class: 'avatar' %>
+		<% end %>
+		<% if attachments['stars.png'].present?  %>
+			<%= image_tag attachments['stars.png'].url, alt: 'Shyft', class: 'normal' %>
+		<% end %>
+		<p class="average">Average Response Time<br>
+			<b ><%= @ambassador.response_time %> minutes </b>
+		</p>
+		<p class="average">Acceptance Rate<br>
+			<b><%= @ambassador.acceptance_rate %>%</b>
+		</p>
+</div>
+
+
+<div class="footer" >
+
+	<div class="footer-content">
+		
+		<hr>
+
+		<p>Copyright © *|CURRENT_YEAR|* *|LIST:COMPANY|*, All rights reserved.<br>
+		*|IFNOT:ARCHIVE_PAGE|* *|LIST:DESCRIPTION|*</p>
+
+		<p><b>Our mailing address is:</b> <br>
+		*|HTML:LIST_ADDRESS_HTML|* *|END:IF|*</p>
+
+		<p>Want to change how you receive these emails?<br>
+		You can <a href="#" >update your preferences</a> or<a href="#" > unsubscribe from this list</a></p>
+
+		<p>*|IF:REWARDS|* *|HTML:REWARDS|* *|END:IF|*</p>
+	</div>
+
+</div>

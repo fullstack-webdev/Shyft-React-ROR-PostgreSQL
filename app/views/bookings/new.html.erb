@@ -1,0 +1,63 @@
+<div class="account-settings row">
+  <div class="content row">
+    <div class="main row">
+      <% flash.each do |name, msg| %>
+      	<%= content_tag(:div, msg, class: "alert alert-info") %>
+      <% end %>
+      <div class="title">
+        <h2>Event Details</h2>
+        <div class="row">
+          <%= link_to "Go back", { controller: "events", action: "new" }, :class => "back-button" %>
+        </div>
+      </div>
+      <%= form_for(@booking) do |f| %>
+      <div class="col-sm-8">
+  			<div class="panel panel-default">
+  				<div class="panel-body">
+  					<div class="row">
+  						<h3><%= @event.name %></h3>
+  					</div>
+  					<div class="row">
+  						<p><%= @event.event_details %></p>
+  					</div>
+  				</div>
+  				<div class="panel-body">
+  					<!-- new request -->
+  					<div class="row">
+  						<h3>Booking Requests</h3>
+  						<hr>
+  						<table style="width: 100%;">
+  							<tbody>
+	                <% if !@booking.booking_staff.blank? %>
+	                  <% for @item in @booking.booking_staff %>
+                      <%= render partial: "staff", locals: {item: @item} %>
+	                  <% end %>
+	                <% else %>
+	                <% end %>
+  							</tbody>
+  						</table>
+  					</div><!-- new request -->
+  				</div>
+  			</div> <!-- panel-body -->
+  		</div> <!-- panel -->
+  		<div class="col-sm-4">
+        <div class="panel panel-default yellow-border">
+          <div class="row send-booking-request">
+            <%= f.hidden_field :event_id, value: @event.id %>
+              <%= f.submit "Send Booking Request", class: "btn btn-primary booking-request", id: "booking-request", data: { disable_with: "Sending..." }%>
+            <hr>
+            <p class="description">By placing your order, you agree to Shyft's <%= active_link_to 'Terms of Use', terms_of_use_path, :target => "_blank" %> and <%= active_link_to 'Privacy Policy', privacy_policy_path, :target => "_blank" %></p>
+          </div>
+          <div class="row booking-summary">
+            <%= render partial: "summary", locals: {
+              unique_staff: @booking.booking_summary.unique_staff,
+              tax_rate: @booking.booking_summary.displayed_tax_rate,
+              service_fee: @booking.booking_summary.displayed_service_fee,
+              booking_total: @booking_total } %>
+          </div>
+  		  </div>
+      </div>
+	  <% end %>
+    </div> <!-- main -->
+  </div> <!-- content -->
+</div> <!-- agency -->

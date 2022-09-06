@@ -1,0 +1,62 @@
+.nav-tabs > li {
+  padding: 0;
+}
+.panel-body .table {
+  font-size: 14px;
+}
+
+.unread-messages {
+	font-size: 10px;
+	margin-top: -5px;
+}
+
+.cancel-booking {
+	.cancel-button {
+		background-color: #f6931f;
+		border-radius: 5px !important;
+	    color: #fff;
+	    border: none;
+	    padding: 10px 20px 10px 20px;
+	    border-radius: 2px;
+	    margin-bottom: 5px;
+	    width: 100%;
+	    max-width: 160px;
+	    font-size: 16px;
+	    height: 50px;
+	    margin-top: -4px;
+	    font-family: "Roboto", Helvetica, Arial, sans-serif;
+	    text-transform: uppercase;
+	    &:hover{
+	    	background-color: #16a085;
+    		color: #fff;
+	    }
+	}
+	a.no-cancel {
+		color: #337ab7 !important;
+		text-decoration: none;
+		&:hover {
+			color: #f6931f !important;
+		}
+		padding-right: 20px;
+
+	}
+
+	.modal-footer {
+		text-align: center;
+		margin: 0 auto;
+	}
+
+	h4 {
+		font-size: 14px !important;
+	}
+
+}
+.event-details{
+	min-height: 50px;
+	font-size: 14px;
+}
+.event-detail{
+	p {
+		margin-bottom: 5px;
+	}
+}

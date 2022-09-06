@@ -1,0 +1,137 @@
+<script type='text/javascript'>
+window.__lo_site_id = 42338;
+(function() {
+var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+})();
+</script>
+<header>
+<div class="container-fluid main">
+  <nav class="navbar" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-brand" id="shyft-logo">
+        <%= link_to image_tag("shyft-logo-main.png", alt: "Shyft logo"), root_path, id: "shyft-logo" %>
+      </div>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        <% if logged_in? %>
+         <li><%= link_to dashboard_path do %>
+          <i class="fa fa-calendar"></i> Your Events
+          <% end %>
+        </li>
+        <li>
+          <%= link_to 'My Account <b class="caret"></b>' .html_safe, root_path, :class => 'link btn-link dropdown-toggle', :id => 'accountdropdown', :'data-toggle' => 'dropdown', :type => 'button' %>
+          <ul class="dropdown-menu" aria-labelledby="accountdropdown">
+            <li id="dropdown-option"><%= link_to 'View Profile' .html_safe, current_user %></li>
+            <li class="divider"></li>
+            <li id="dropdown-option"><%= link_to 'Account Settings' .html_safe, edit_ambassador_path(current_user) %></li>
+
+            <!-- <li id="dropdown-option"><a href="#">TRANSACTIONS</a></li> -->
+            <li class="divider"></li>
+            <li id="dropdown-option" id="dropdown-option"><%= link_to "Logout", logout_path, method: :delete %></li>
+          </ul>
+        </li>
+
+        <% elsif agency_signed_in?  && current_agency.activated == false%>
+
+          <% if params[:agency_id] != nil
+            route_id = params[:agency_id]
+          else
+            route_id = params[:id]
+          end%>
+
+          <li>
+            <%= link_to 'My Account <b class="caret"></b>' .html_safe, root_path, :class => 'link btn-link dropdown-toggle', :id => 'accountdropdown', :'data-toggle' => 'dropdown', :type => 'button' %>
+            <ul class="dropdown-menu" aria-labelledby="accountdropdown">
+              <li id="dropdown-option">
+
+                <%= link_to edit_agency_registration_path(:agency_id) do %>
+                  Edit Profile
+                <% end %>
+
+              </li>
+<!--               <li id="dropdown-option">
+                <%= active_link_to agency_inbox_path(:agency_id) do %>
+                  Invoices
+                <% end %>
+              </li> -->
+              <li class="divider"></li>
+              <li id="dropdown-option" id="dropdown-option"><%= link_to "Logout", destroy_agency_session_path, method: :delete %></li>
+            </ul>
+
+                <% elsif agency_signed_in?  && current_agency.activated == true%>
+
+                  <% if params[:agency_id] != nil
+                    route_id = params[:agency_id]
+                  else
+                    route_id = params[:id]
+                  end%>
+
+                  <li>
+                    <%= link_to new_event_session_path, method: :get do %>
+                      <i class="fa fa-plus"></i> New Event
+                    <% end %>
+                  </li>
+
+                  <li><%= link_to events_path do %>
+                    <i class="fa fa-calendar"></i> Your Events
+                    <% end %>
+                  </li>
+
+                  <li>
+                    <%= link_to 'My Account <b class="caret"></b>' .html_safe, root_path, :class => 'link btn-link dropdown-toggle', :id => 'accountdropdown', :'data-toggle' => 'dropdown', :type => 'button' %>
+                    <ul class="dropdown-menu" aria-labelledby="accountdropdown">
+                      <li id="dropdown-option">
+
+                        <%= link_to edit_agency_registration_path(:agency_id) do %>
+                          Edit Profile
+                        <% end %>
+
+                      </li>
+        <!--               <li id="dropdown-option">
+                        <%= active_link_to agency_inbox_path(:agency_id) do %>
+                          Invoices
+                        <% end %>
+                      </li> -->
+                      <li class="divider"></li>
+                      <li id="dropdown-option" id="dropdown-option"><%= link_to "Logout", destroy_agency_session_path, method: :delete %></li>
+                    </ul>
+                <% else %>
+
+        <li><%= link_to 'Why Shyft?', why_shyft_path %></li>
+          <!-- THIS IS THE HELP BUTTON -->
+        <li>
+          <%= link_to 'Get Started <b class="caret"></b>' .html_safe, root_path, :class => 'link btn-link dropdown-toggle', :id => 'helpdropdown', :'data-toggle' => 'dropdown', :type => 'button' %>
+          <ul class="dropdown-menu" aria-labelledby="helpdropdown">
+            <li id="dropdown-option" id="dropdown-option"><%= link_to "Hire event staff", new_agency_registration_path %></li>
+            <li class="divider"></li>
+            <li id="dropdown-option" id="dropdown-option"><%= link_to "Become an Ambassador", ambassadors_signup_path %></li>
+          </ul>
+          </li>
+
+          <li>
+            <%= link_to 'Login <b class="caret"></b>' .html_safe, root_path, :class => 'link btn-link dropdown-toggle', :id => 'helpdropdown', :'data-toggle' => 'dropdown', :type => 'button' %>
+            <ul class="dropdown-menu" aria-labelledby="helpdropdown">
+              <li id="dropdown-option" id="dropdown-option"><%= link_to "Ambassador", login_path %></li>
+              <li class="divider"></li>
+              <li id="dropdown-option" id="dropdown-option"><%= link_to "Agency", new_agency_session_path %></li>
+            </ul>
+            </li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>
+</div><!-- /.container-fluid -->
+</header>

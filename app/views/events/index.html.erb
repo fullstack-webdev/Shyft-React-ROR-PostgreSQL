@@ -1,0 +1,98 @@
+<div class="account-settings row">
+  <div class="content row">
+    <div class="main row"><br />
+      <% flash.each do |name, msg| %>
+      	<%= content_tag(:div, msg, class: "alert alert-info") %>
+      <% end %>
+      <div class="title">
+        <h2>Dashboard</h2>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-sm-12">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <% if @events.present? %>
+                  <thead>
+                    <tr>
+                      <th>Start Date</th>
+                      <th>Event Name</th>
+                      <th>Details</th>
+                      <th>Messages</th>
+                      <th>Event Locations</th>
+                      <th>Cancel</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @events.each do |e| %>
+                      <tr>
+                      <% if e.event_locations == [] %>
+                        <td>-</td>
+                      <% else %>
+                        <% event_dates = e.event_locations.first.event_dates.order(:event_date).first(1) %>
+                        <td>
+                          <% if event_dates.present? && event_dates.first.event_date.present? %>
+                            <%= event_dates.first.event_date %>
+                          <% end %>  
+                          </td>
+                    	<% end %>
+                        <td class='edit-link'>
+                          <% if e.name == nil %>
+                            <p>Unknown Event</p>
+                          <% else %>
+                            <%= link_to e.name.capitalize, edit_event_path(e) %>
+                          <% end %>
+                        </td>
+                        <td><%= e.event_details %></td>
+                        <td>
+                          <%= link_to event_conversations_path(:event_id => e.id) do %>
+                            <i class="fa fa-envelope"></i>
+                            <% if e.total_unread_messages_by_agency > 0 %>
+                              <sup class="unread-messages"><%= e.total_unread_messages_by_agency%></sup>
+                            <% end %>
+                          <% end %>
+                        </td>
+                        <% if e.event_locations == [] %>
+                          <td>No Locations Yet</td>
+                        <% else %>
+                          <% event_locations = e.event_locations.pluck(:label) %>
+                          <td>
+                            <% event_locations.each_with_index do |location, index| %>
+                              <%= location%><%= index == event_locations.length - 1 ? "": "," %>
+                            <% end %>
+                          </td>
+                      	<% end %>
+                        
+                        <td><%=  %></td>
+                        <!-- <td><%= link_to 'Edit', edit_event_path(e) %></td> -->
+                        <td><%= link_to 'Cancel', delete_event_path(e), method: :delete %></td>
+                      </tr>
+                    <%end%>
+                  </tbody>
+                </table>
+                  <%= button_to "New Event", new_event_session_path, id: "ambassador-btn", method: :get %>
+                <% else %>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>No events yet</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                  </table>
+                <div class="create-event">
+                  <%= button_to "Create First Event", new_event_session_path, id: "ambassador-btn", method: :get %>
+                </div> <!-- create-event -->
+              <% end %>
+            </div> <!-- /.table-responsive -->
+          </div> <!-- panel -->
+        </div> <!-- col -->
+      </div> <!-- panel -->
+    </div> <!-- main -->
+  </div> <!-- content -->
+</div> <!-- account-settings -->

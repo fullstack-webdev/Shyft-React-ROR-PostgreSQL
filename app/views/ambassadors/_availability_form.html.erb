@@ -1,0 +1,57 @@
+      <div class="panel panel-default">
+             <div class="panel-heading">
+               <h3 class="panel-title">Availability</h3>
+             </div> 
+             <div class="panel-body">
+               <div class="container-fluid">
+                 
+                   <%= f.fields_for :weekly_unavailability do |builder| %>
+                    <div class="row" id="datepairExample">            
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <p>Sunday</p>
+                        </div>
+                        <div class="col-sm-4">
+                          <%= builder.text_field :sunday_start, placeholder: "Start Time", class: 'time start form-control' %> 
+                        </div>
+                        <div class="col-sm-1">to</div>
+                        <div class="col-sm-4">
+                          <%= builder.text_field :sunday_end, placeholder: "End Time", class: 'time end form-control' %>
+                        </div>
+                      </div> <!-- row -->
+                    
+                    <hr>
+                       Monday
+                       <%= builder.text_field :monday_start, placeholder: "Start Time", class: 'time start form-control' %> to
+                       <%= builder.text_field :monday_end, placeholder: "End Time", class: 'time end' %><br>
+                       Tuesday
+                       <%= builder.text_field :tuesday_start, placeholder: "Start Time", class: 'time start' %> to
+                       <%= builder.text_field :tuesday_end, placeholder: "End Time", class: 'time end' %><br>
+                       Wednesday
+                       <%= builder.text_field :wednesday_start, placeholder: "Start Time", class: 'time start' %> to
+                       <%= builder.text_field :wednesday_end, placeholder: "End Time", class: 'time end' %><br>
+                       Thursday
+                       <%= builder.text_field :thursday_start, placeholder: "Start Time", class: 'time start' %> to
+                       <%= builder.text_field :thursday_end, placeholder: "End Time", class: 'time end' %><br>
+                       Friday
+                       <%= builder.text_field :friday_start, placeholder: "Start Time", class: 'time start' %> to
+                       <%= builder.text_field :friday_end, placeholder: "End Time", class: 'time end' %><br>
+                       Saturday
+                       <%= builder.text_field :saturday_start, placeholder: "Start Time", class: 'time start' %> to
+                       <%= builder.text_field :saturday_end, placeholder: "End Time", class: 'time end' %><br>
+                     </div> <!-- row -->              
+                   <% end %>
+                     <script>
+                         // initialize input widgets first
+                         $('#datepairExample .time').timepicker({
+                             'showDuration': true,
+                             'timeFormat': 'g:ia',
+                             'scrollDefault': 'now'
+                         });
+                         // initialize datepair
+                         $('#datepairExample').datepair();
+                     </script>
+                 </div> <!-- row -->
+               </div> <!-- container -->
+             </div> <!-- panel-body -->
+           </div> <!-- panel-defaul -->

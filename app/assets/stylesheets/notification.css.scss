@@ -1,0 +1,11 @@
+.container{
+	&.notification {
+		div {
+			padding-bottom: 10px;
+		}
+		span {
+			color: #333333;
+			font-size: 16px;
+		}
+	}	
+}

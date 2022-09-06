@@ -1,0 +1,31 @@
+<!-- Modal -->
+<div id="cancel_booking<%=event.id%>" class="modal fade cancel-booking" role="dialog">
+  <div class="modal-dialog">
+  <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" align="center"><%= event.name %></h4>
+      </div> <!-- modal-header -->
+      <%= form_tag cancel_booking_path do %>
+      <%= hidden_field_tag 'event_id', event.id %>
+      <%= hidden_field_tag 'ambassador_id', current_user.id %>
+      <div class="modal-body">
+        <div class="form">
+          <div class="panel-body align-center">
+            <p>By cancelling this event your ambassador rating will be reduced making it less likely to get more bookings. Please try to  message agency to resolve any issue you might have before cancelling.</p>
+          </div>
+
+          <div class="panel-title align-center">
+            <h4 class="modal-title">Are you sure that you want to cancel this event?</h4>
+          </div>
+        </div> <!-- form -->
+      </div> <!-- modal-body -->
+      <div class="modal-footer">
+        <a type="button" class="no-cancel" data-dismiss="modal">No, don't cancel</a>
+        <%= submit_tag 'Cancel Event', class:'cancel-button' %>
+      </div>
+      <% end %>
+    </div> <!-- modal-content -->
+  </div> <!-- modal-dialog -->
+</div> <!-- End of Modal-->

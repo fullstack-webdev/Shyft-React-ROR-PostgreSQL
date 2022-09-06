@@ -1,0 +1,74 @@
+<div class="email-template-wrap">
+
+	<a href="#">
+		<%= image_tag attachments["logo.png"].url, alt: "Shyft", class: "img-logo" %>
+	</a>
+
+	<div class="hero">
+		<h2 >Event Declined</h2>
+		<p >Bummer!</p>
+	</div>
+	
+	<div>
+		<p class="big">What happened? The more we know the better shifts we can give you. Did the times not work for you? If so, please log in to your account <a href="http://www.shyftworks.com/login" >here</a> and update your availability. If you had to decline for another reason please respond to this email to let us know! Thanks.</p>
+	</div>
+
+	<hr class="hr-up">
+
+	<h3 class="second-title">Declined Shifts</h3>
+
+	<p class="event-title">Event Name: <%= @event.name %></p>
+
+	<div class="events">
+		<p>
+			Event Details <br>
+			<%= @event.event_details %>
+		</p>
+		<% @schedules.each do |schedule| %>
+			<p>
+				<%= schedule[:date] %><br>
+				<%= schedule[:startTime] %> - <%= schedule[:endTime] %><br>
+				<%= schedule[:location] %>
+			</p>
+		<% end %>
+
+	
+		<hr class="normal">
+		<% if !@avatar_image.present? %>
+			<%= image_tag attachments['avatar.png'].url, alt: 'Shyft', class: 'avatar' %>
+		<% else %>
+			<%= image_tag @avatar_image_url, alt: 'Shyft', class: 'avatar' %>
+		<% end %>
+		<% if attachments['stars.png'].present?  %>
+			<%= image_tag attachments['stars.png'].url, alt: 'Shyft', class: 'normal' %>
+		<% end %>
+		
+		<p class="average">Average Response Time<br>
+			<b ><%= @ambassador.response_time %> minutes </b>
+		</p>
+		<p class="average">Acceptance Rate<br>
+			<b><%= @ambassador.acceptance_rate %>%</b>
+		</p>
+	</div>
+</div>
+
+
+<div class="footer" >
+
+	<div class="footer-content">
+		
+		<hr>
+
+		<p>Copyright © *|CURRENT_YEAR|* *|LIST:COMPANY|*, All rights reserved.<br>
+		*|IFNOT:ARCHIVE_PAGE|* *|LIST:DESCRIPTION|*</p>
+
+		<p><b>Our mailing address is:</b> <br>
+		*|HTML:LIST_ADDRESS_HTML|* *|END:IF|*</p>
+
+		<p>Want to change how you receive these emails?<br>
+		You can <a href="#" >update your preferences</a> or<a href="#" > unsubscribe from this list</a></p>
+
+		<p>*|IF:REWARDS|* *|HTML:REWARDS|* *|END:IF|*</p>
+	</div>
+
+</div>

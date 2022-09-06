@@ -1,0 +1,25 @@
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: shyft_development
+
+test:
+  <<: *default
+  database: shyft_test
+
+#
+production:
+  <<: *default
+  database: shyft_production
+  username: shyft
+  password: <%= ENV['SHYFT_DATABASE_PASSWORD'] %>
+  url:  <%= ENV["DATABASE_URL"] %>
+  pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>

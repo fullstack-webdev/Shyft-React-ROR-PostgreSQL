@@ -1,0 +1,40 @@
+
+<div class="container-fluid login">
+  <div class="row text-center">
+    <div class="devise-header">
+      <div class="text-center">
+      </div>
+    </div>
+  </div>
+
+  <div class="background row">
+    <div class="login-box">
+    <% flash.each do |name, msg| %>
+       <%= content_tag(:div, msg, class: "alert alert-info") %>
+     <% end %>
+
+      <div class="title">
+        <% provide(:title, 'Forgot password') %>
+        <h2>Forgot your password?</h2>
+      </div>
+
+		<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+		  <%= f.error_notification %>
+
+	  	<div class="form-inputs">
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+            	 <%= f.email_field :email, class: "form-control", placeholder: 'Email', autofocus: true, required: true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit  "Send me reset instructions",  class: "btn", id: "book-btn" %>
+      </div>
+		<% end %>
+
+		<%= render "agency/shared/links" %>
+	</div>
+</div>

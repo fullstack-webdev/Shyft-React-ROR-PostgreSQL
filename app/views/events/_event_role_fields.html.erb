@@ -1,0 +1,51 @@
+<div class="row event-section">
+	<div class="title">
+		<div class="col-sm-12">
+			<h3> Roles </h3>
+		</div>
+	</div>
+	<hr>
+<div class="multi-field-wrapper">
+	<div class="multi-fields">
+		<div class="multi-field">
+			<div class="row">
+				<div class="col-sm-4">
+					<%= f.select :role, [['Sales', 'sales'], ['Activation', 'activation'], ['Sampling', 'sampling'], ['Bar Tending', 'bar tending']], {include_blank: "Select Role"}, {class: 'form-control'} %>
+				</div> <!-- col-sm-3  -->
+				<div class="col-sm-4">
+					<%= f.number_field :hourly_rate, :placeholder => "Hourly Rate", label: false, class: 'form-control' %>
+				</div> <!-- col-sm-4 -->
+				<div class="col-sm-3">	
+					<%= f.number_field :quantity, :placeholder => "Quantity of Hours", label: false, class: 'form-control' %>
+				</div> <!-- col-sm-4 -->
+				<div class="col-sm-1">
+					<button type="button" class="remove-field" id=""><span class="glyphicon glyphicon-trash"></span></button>
+				</div> <!-- col --><br>
+
+			</div> <!-- row -->
+		</div> <!-- multi-field -->	
+	</div> <!-- multi-fields -->
+	<br>
+	<div class="row col-sm-12">
+		<button type="button" class="add-field" id="ambassador-btn">Add Role</button>	
+	</div>
+</div> <!-- multi-field-wrapper -->
+
+<script>
+$(".remove-field").click(function(e){
+	e.preventDefault();
+	$(this).closest(".multi-field").remove();
+});
+
+
+$(".add-field").click(function(e){
+	e.preventDefault();
+	$(".multi-fields").append("<div class='multi-field'><div class='row'><div class='col-sm-4'><select class='form-control' name='event[event_location][event_date][event_role][type]' id='event_event_location_event_date_event_role_type'><option selected='>Select Role</option><option value='sales'>Sales</option><option value='activation'>Activation</option><option value='sampling'>Sampling</option><option value='bar tending'>Bar Tending</option></select></div><div class='col-sm-4'><input placeholder='Hourly Rate' label='false' class='form-control' type='number' name='event[event_location][event_date][event_role][hourly_rate]' id='event_event_location_event_date_event_role_hourly_rate'></div><div class='col-sm-3'><input placeholder='Quantity of Hours' label='false' class='form-control' type='number' name='event[event_location][event_date][event_role][quantity]' id='event_event_location_event_date_event_role_quantity'></div><button type='button' class='remove-field'>Remove</button></div></div>");
+	$(".remove-field").click(function(e){
+	  	e.preventDefault();
+		$(this).closest(".multi-field").remove();
+	});
+});
+ </script>
+</div> <!-- row -->
+<br>

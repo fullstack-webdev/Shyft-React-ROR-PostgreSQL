@@ -1,0 +1,15 @@
+<div class="row chat-row">
+	<div class="col-sm-2 chat-thread">
+		<% if message.user_type == 'agency' %>
+			<img src="http://img.photobucket.com/albums/v436/passion4architecture/LOGO_LETTERS%20and%20NUMBERS/Logo_Advantech-Wireless-Broadband-Culture_dian-hasan-branding_US-2_zps4c6702a3.png" style="width:50px;height:50px;">
+		<% elsif message.user_type == 'ambassador' %>	
+			<%= attachment_image_tag(@conversation.recipient.profile_photo, :file, :fill, 50, 50, class: 'img-circle ambassador',)%>
+		<% else %>
+			
+		<% end %>
+	</div>
+	<div class="col-sm-4"><%= message.message_time %></div>
+	<div class="col-sm-6">
+		<%= message.content %>
+	</div>
+</div>
